@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		1D59A6EA25F92BA600433C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A6E925F92BA600433C22 /* AppDelegate.swift */; };
 		1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */; };
-		1D59A6EE25F92BA600433C22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A6ED25F92BA600433C22 /* ViewController.swift */; };
 		1D59A6F125F92BA600433C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6EF25F92BA600433C22 /* Main.storyboard */; };
 		1D59A6F325F92BA700433C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F225F92BA700433C22 /* Assets.xcassets */; };
 		1D59A6F625F92BA700433C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F425F92BA700433C22 /* LaunchScreen.storyboard */; };
+		1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* HomeViewController.swift */; };
+		1D59A70725F94CBB00433C22 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70625F94CBB00433C22 /* Channel.swift */; };
+		1D59A70A25F94CFC00433C22 /* ChannelTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70925F94CFC00433C22 /* ChannelTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D59A6E625F92BA600433C22 /* Slacker Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slacker Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D59A6E925F92BA600433C22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1D59A6ED25F92BA600433C22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D59A6F025F92BA600433C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D59A6F225F92BA700433C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D59A6F525F92BA700433C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D59A6F725F92BA700433C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D59A70325F93E0100433C22 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1D59A70625F94CBB00433C22 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1D59A70925F94CFC00433C22 /* ChannelTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,39 @@
 			children = (
 				1D59A6E925F92BA600433C22 /* AppDelegate.swift */,
 				1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */,
-				1D59A6ED25F92BA600433C22 /* ViewController.swift */,
+				1D59A70025F93C4000433C22 /* View */,
+				1D59A70125F93C4A00433C22 /* Model */,
+				1D59A6FF25F93C3400433C22 /* Controller */,
 				1D59A6EF25F92BA600433C22 /* Main.storyboard */,
 				1D59A6F225F92BA700433C22 /* Assets.xcassets */,
 				1D59A6F425F92BA700433C22 /* LaunchScreen.storyboard */,
 				1D59A6F725F92BA700433C22 /* Info.plist */,
 			);
 			path = "Slacker Clone";
+			sourceTree = "<group>";
+		};
+		1D59A6FF25F93C3400433C22 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D59A70325F93E0100433C22 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D59A70025F93C4000433C22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D59A70925F94CFC00433C22 /* ChannelTVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D59A70125F93C4A00433C22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D59A70625F94CBB00433C22 /* Channel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D59A6EE25F92BA600433C22 /* ViewController.swift in Sources */,
 				1D59A6EA25F92BA600433C22 /* AppDelegate.swift in Sources */,
+				1D59A70725F94CBB00433C22 /* Channel.swift in Sources */,
+				1D59A70A25F94CFC00433C22 /* ChannelTVC.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
+				1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickmartinez.Slacker-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +347,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickmartinez.Slacker-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
