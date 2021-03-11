@@ -9,15 +9,18 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var channelsTableView: UITableView!
     @IBOutlet weak var button:    UIButton!
+    @IBOutlet weak var threadsTableView: UITableView!
+    @IBOutlet weak var directMessagesTableView: UITableView!
     
     var placeHolderData = [Channel(name: "apple-events"),Channel(name: "beginner-questions"),Channel(name: "career-advice"),Channel(name: "course-github-followers"),Channel(name: "general"),Channel(name: "resources")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        channelsTableView.delegate = self
+        channelsTableView.dataSource = self
+        
         button.layer.cornerRadius = 25
         
     }
@@ -33,10 +36,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "channelsCell") as? ChannelTVC {
             cell.configCell(placeHolderData[indexPath.row])
             return cell
         }
+        
         return UITableViewCell()
     }
     
