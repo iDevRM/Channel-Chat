@@ -28,6 +28,7 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "registerSegue", sender: nil)
     }
     
 
