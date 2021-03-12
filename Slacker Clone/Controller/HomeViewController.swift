@@ -31,18 +31,44 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placeHolderData.count + 1
+        return placeHolderData.count + 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-            if indexPath.row == 0 {
+        if indexPath.row == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
                 cell.configCell(imageName: "square.stack.3d.down.right", title: "Threads")
                 return cell
-            } else {
-                cell.configCell(imageName: "number", title: placeHolderData[indexPath.row - 1].name)
+            }
+        } else if indexPath.row == 1 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "dividerCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: nil, title: "Channels")
+                return cell
+            }
+        } else if indexPath.row == 8 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "dividerCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: nil, title: "Direct Messages")
+                return cell
+            }
+        } else if indexPath.row == 9 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: "heart.fill", title: "Slackbot")
+                return cell
+            }
+        } else if indexPath.row == 10 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: "circle.fill", title: "Rick Martinez")
+                return cell
+            }
+        } else if indexPath.row == 11 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: "plus", title: "Add teammates")
+                return cell
+            }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
+                cell.configCell(imageName: "number", title: placeHolderData[indexPath.row - 2].name)
                 return cell
             }
         }

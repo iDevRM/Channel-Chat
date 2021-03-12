@@ -12,9 +12,12 @@ class ChannelTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
     
-    func configCell(imageName: String, title: String) {
+    func configCell(imageName: String?, title: String) {
         label.text = title
-        thumbnail.image = UIImage(systemName: "\(imageName)")
+        if imageName != nil {
+            thumbnail.image = UIImage(systemName: "\(imageName!)")
+        }
+        
     }
 
 }

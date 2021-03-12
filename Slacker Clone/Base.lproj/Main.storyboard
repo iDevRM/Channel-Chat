@@ -100,6 +100,37 @@
                                             <outlet property="thumbnail" destination="J3K-rX-hne" id="Iy7-di-M5w"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dividerCell" rowHeight="59" id="uGh-Rn-gBZ" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="87" width="374" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uGh-Rn-gBZ" id="JIs-ta-hwb">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-R8-LYJ">
+                                                    <rect key="frame" x="10" y="19.666666666666668" width="40.666666666666664" height="20.000000000000004"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOL-ML-Udc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="20"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="ZXX-aO-xHv"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6y8-R8-LYJ" firstAttribute="centerY" secondItem="JIs-ta-hwb" secondAttribute="centerY" id="7XC-z2-Hdq"/>
+                                                <constraint firstItem="6y8-R8-LYJ" firstAttribute="leading" secondItem="JIs-ta-hwb" secondAttribute="leadingMargin" constant="-10" id="Pyu-Id-Da9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="NOL-ML-Udc" id="Rew-wV-YL0"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
