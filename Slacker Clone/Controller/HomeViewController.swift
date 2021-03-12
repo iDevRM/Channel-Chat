@@ -31,15 +31,20 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placeHolderData.count
+        return placeHolderData.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-            cell.configCell("number", title: placeHolderData[indexPath.row].name)
-            return cell
+            if indexPath.row == 0 {
+                cell.configCell(imageName: "square.stack.3d.down.right", title: "Threads")
+                return cell
+            } else {
+                cell.configCell(imageName: "number", title: placeHolderData[indexPath.row - 1].name)
+                return cell
+            }
         }
         
         return UITableViewCell()
