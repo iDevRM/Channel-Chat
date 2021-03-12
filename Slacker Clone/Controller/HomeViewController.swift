@@ -8,19 +8,18 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar:         UISearchBar!
     @IBOutlet weak var channelsTableView: UITableView!
-    @IBOutlet weak var button:    UIButton!
+    @IBOutlet weak var button:            UIButton!
 
     
     var placeHolderData = [Channel(name: "apple-events"),Channel(name: "beginner-questions"),Channel(name: "career-advice"),Channel(name: "course-github-followers"),Channel(name: "general"),Channel(name: "resources")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        channelsTableView.delegate = self
+        channelsTableView.delegate   = self
         channelsTableView.dataSource = self
-        
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius    = 25
         
     }
     
@@ -54,11 +53,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 9 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
                 cell.configCell(imageName: "heart.fill", title: "Slackbot")
+                cell.thumbnail.tintColor = #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1)
                 return cell
             }
         } else if indexPath.row == 10 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
                 cell.configCell(imageName: "circle.fill", title: "Rick Martinez")
+                cell.thumbnail.tintColor = #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1)
                 return cell
             }
         } else if indexPath.row == 11 {
@@ -74,6 +75,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return UITableViewCell()
+        
     }
     
     

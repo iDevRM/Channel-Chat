@@ -15,6 +15,7 @@
 		1D59A6F625F92BA700433C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F425F92BA700433C22 /* LaunchScreen.storyboard */; };
 		1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* HomeViewController.swift */; };
 		1D59A70725F94CBB00433C22 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70625F94CBB00433C22 /* Channel.swift */; };
+		1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1D59A6F725F92BA700433C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D59A70325F93E0100433C22 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D59A70625F94CBB00433C22 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1D59A70325F93E0100433C22 /* HomeViewController.swift */,
+				1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				1D59A6EA25F92BA600433C22 /* AppDelegate.swift in Sources */,
 				1D59A70725F94CBB00433C22 /* Channel.swift in Sources */,
+				1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
 				1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */,
 				1D19513025FAC53E0065DC4C /* ChannelTableViewCell.swift in Sources */,
