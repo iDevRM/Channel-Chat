@@ -35,46 +35,44 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: "square.stack.3d.down.right", title: "Threads")
+        func createCell(withIndentifier: String, imageName: String?, title: String, color: UIColor?) -> UITableViewCell {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "\(withIndentifier)") as? ChannelTableViewCell {
+                
+                if imageName != nil {
+                    cell.configCell(imageName: "\(imageName!)", title: "\(title)")
+                } else {
+                    cell.configCell(imageName: nil, title: "\(title)")
+                }
+                
+                if color != nil {
+                    cell.thumbnail.tintColor = color
+                }
+                
                 return cell
+                
             }
-        } else if indexPath.row == 1 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "dividerCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: nil, title: "Channels")
-                return cell
-            }
-        } else if indexPath.row == 8 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "dividerCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: nil, title: "Direct Messages")
-                return cell
-            }
-        } else if indexPath.row == 9 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: "heart.fill", title: "Slackbot")
-                cell.thumbnail.tintColor = #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1)
-                return cell
-            }
-        } else if indexPath.row == 10 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: "circle.fill", title: "Rick Martinez")
-                cell.thumbnail.tintColor = #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1)
-                return cell
-            }
-        } else if indexPath.row == 11 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: "plus", title: "Add teammates")
-                return cell
-            }
-        } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
-                cell.configCell(imageName: "number", title: placeHolderData[indexPath.row - 2].name)
-                return cell
-            }
+            
+            return UITableViewCell()
+            
         }
         
-        return UITableViewCell()
+        switch indexPath.row {
+        case 0:
+            return createCell(withIndentifier: "channelCell", imageName: "square.stack.3d.down.right", title: "Threads", color: nil)
+        case 1:
+            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Channels", color: nil)
+        case 8:
+            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
+        case 9:
+            return createCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+        case 10:
+            return createCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+        case 11:
+            return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
+        default:
+            return createCell(withIndentifier: "channelCell", imageName: "number", title: "\(placeHolderData[indexPath.row - 2].name)", color: nil)
+        }
         
     }
     
