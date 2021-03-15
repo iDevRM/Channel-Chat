@@ -239,10 +239,10 @@
             </objects>
             <point key="canvasLocation" x="-1292.753623188406" y="-126.35869565217392"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="JFu-a6-Q47">
             <objects>
-                <viewController id="lC7-sN-pWu" sceneMemberID="viewController">
+                <viewController id="lC7-sN-pWu" customClass="RegisterViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t04-1z-JMb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,6 +281,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="lC7-sN-pWu" eventType="touchUpInside" id="cIc-7f-sD5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkM-hb-Aw1">
                                 <rect key="frame" x="87" y="50" width="240" height="240"/>
@@ -298,6 +301,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6n-lC-kDC">
+                                <rect key="frame" x="87" y="50" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="selectImageButtonTapped:" destination="lC7-sN-pWu" eventType="touchUpInside" id="XxX-96-gb0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oaw-ls-jOi"/>
                         <color key="backgroundColor" red="0.1529411765" green="0.035294117649999998" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
@@ -314,6 +324,14 @@
                             <constraint firstItem="5Kg-ET-vlG" firstAttribute="top" secondItem="BrB-Zt-1jA" secondAttribute="bottom" constant="20" id="thT-6V-RiK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="5Kg-ET-vlG" id="ZPV-uD-chL"/>
+                        <outlet property="imageView" destination="mIC-DZ-a88" id="72M-be-Riy"/>
+                        <outlet property="nameTextField" destination="BrB-Zt-1jA" id="8Q3-83-XK7"/>
+                        <outlet property="passwordTextField" destination="NKX-pZ-oEm" id="jbP-8k-hqA"/>
+                        <outlet property="registerButton" destination="9aD-Wk-mGC" id="MuK-Cn-MJO"/>
+                        <outlet property="selectImageButton" destination="D6n-lC-kDC" id="i3L-pJ-SIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSc-Cv-5SO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
