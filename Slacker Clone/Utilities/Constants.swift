@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum Constants: String {
-    case TOKEN_KEY = "token"
-    case LOGGED_IN_KEY = "loggedIn"
-    case USER_EMAIL = "userEmail"
-}
+
+
+let TOKEN_KEY = "token"
+let LOGGED_IN_KEY = "loggedIn"
+let USER_EMAIL = "userEmail"
+

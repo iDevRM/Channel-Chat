@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum URLQueries: String {
+enum URLEndpoint: String {
     case reigisterUser = "/v1/account/register"
     case loginUser     = "/v1/account/login"
     case addUser       = "/v1/user/add"
