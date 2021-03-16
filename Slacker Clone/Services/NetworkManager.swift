@@ -44,8 +44,8 @@ class NetworkManager {
         }
     }
     
-    func urlWithEndpoint(_ type: URLEndpoint) -> String {
-        return "\(BASE_URL)\(type)"
+    func urlWithEndpoint(type: URLEndpoint) -> String {
+        return "\(BASE_URL)\(type.rawValue)"
     }
     
     func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
@@ -60,9 +60,10 @@ class NetworkManager {
             "password": password
         ]
         
-        AF.request(urlWithEndpoint(.reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
+        AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header!).responseString { (response) in
             if response.error == nil {
                 completion(true)
+                print(response)
             } else {
                 completion(false)
                 debugPrint(response.error as Any)

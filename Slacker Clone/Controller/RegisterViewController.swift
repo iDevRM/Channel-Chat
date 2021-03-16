@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController {
     let defaults = UserDefaults.standard
     var userCount = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self
@@ -32,8 +33,10 @@ class RegisterViewController: UIViewController {
         guard passwordTextField.hasText, emailTextField.hasText else { return }
         let user = User(userName: nil, email: emailTextField.text!, password: passwordTextField.text!, avatar: nil)
         userCount += 1
-        defaults.setValue(user, forKey: "\(userCount)")
         
+        NetworkManager.instance.registerUser(email: user.email, password: user.password) { (completion) in
+            print("done")
+        }
         
     }
     
