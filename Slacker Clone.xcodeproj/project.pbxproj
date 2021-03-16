@@ -19,6 +19,9 @@
 		1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8862772600065800A7BC46 /* RegisterViewController.swift */; };
 		1D88627B2600099A00A7BC46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88627A2600099A00A7BC46 /* User.swift */; };
 		1D88627E2600102700A7BC46 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88627D2600102700A7BC46 /* NetworkManager.swift */; };
+		1D89CE6F260114FA00B7B478 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D89CE6E260114FA00B7B478 /* Constants.swift */; };
+		1D89CE73260115DB00B7B478 /* URLQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D89CE72260115DB00B7B478 /* URLQueries.swift */; };
+		21DA412D977D261E724CC103 /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACA14E1BAC6EA745A8609DB /* Pods_Slacker_Clone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,13 @@
 		1D8862772600065800A7BC46 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1D88627A2600099A00A7BC46 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1D88627D2600102700A7BC46 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1D89CE6E260114FA00B7B478 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1D89CE72260115DB00B7B478 /* URLQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueries.swift; sourceTree = "<group>"; };
+		7B4C4A61F1CDD170785DA95F /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		87FE170DC4FA487A95B9A44A /* Pods-Slacker Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.release.xcconfig"; sourceTree = "<group>"; };
+		A15A80BBAE2C1F2E00C538CE /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		CACA14E1BAC6EA745A8609DB /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacker_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F65253EE83C640E9DBB6736F /* Pods-Slacker Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.release.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DA412D977D261E724CC103 /* Pods_Slacker_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +65,8 @@
 			children = (
 				1D59A6E825F92BA600433C22 /* Slacker Clone */,
 				1D59A6E725F92BA600433C22 /* Products */,
+				9886345B4BBCE2E94BD67943 /* Pods */,
+				E81B154056D1978652C5DC05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +83,8 @@
 			children = (
 				1D59A6E925F92BA600433C22 /* AppDelegate.swift */,
 				1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */,
+				1D89CE6D260114CD00B7B478 /* Utilities */,
+				1D89CE6C2601143100B7B478 /* Services */,
 				1D59A70025F93C4000433C22 /* View */,
 				1D59A70125F93C4A00433C22 /* Model */,
 				1D59A6FF25F93C3400433C22 /* Controller */,
@@ -104,9 +119,44 @@
 			children = (
 				1D59A70625F94CBB00433C22 /* Channel.swift */,
 				1D88627A2600099A00A7BC46 /* User.swift */,
-				1D88627D2600102700A7BC46 /* NetworkManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1D89CE6C2601143100B7B478 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1D88627D2600102700A7BC46 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1D89CE6D260114CD00B7B478 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1D89CE6E260114FA00B7B478 /* Constants.swift */,
+				1D89CE72260115DB00B7B478 /* URLQueries.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9886345B4BBCE2E94BD67943 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B4C4A61F1CDD170785DA95F /* Pods-Slacker Clone.debug.xcconfig */,
+				F65253EE83C640E9DBB6736F /* Pods-Slacker Clone.release.xcconfig */,
+				A15A80BBAE2C1F2E00C538CE /* Pods-Slacker Clone.debug.xcconfig */,
+				87FE170DC4FA487A95B9A44A /* Pods-Slacker Clone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E81B154056D1978652C5DC05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CACA14E1BAC6EA745A8609DB /* Pods_Slacker_Clone.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D59A6FA25F92BA700433C22 /* Build configuration list for PBXNativeTarget "Slacker Clone" */;
 			buildPhases = (
+				BDF6000D2A759E2EF82D2893 /* [CP] Check Pods Manifest.lock */,
 				1D59A6E225F92BA600433C22 /* Sources */,
 				1D59A6E325F92BA600433C22 /* Frameworks */,
 				1D59A6E425F92BA600433C22 /* Resources */,
+				BD10D7817B3D201B7638DD89 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,16 +226,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BD10D7817B3D201B7638DD89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDF6000D2A759E2EF82D2893 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Slacker Clone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D59A6E225F92BA600433C22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D89CE73260115DB00B7B478 /* URLQueries.swift in Sources */,
 				1D88627E2600102700A7BC46 /* NetworkManager.swift in Sources */,
 				1D59A6EA25F92BA600433C22 /* AppDelegate.swift in Sources */,
 				1D59A70725F94CBB00433C22 /* Channel.swift in Sources */,
 				1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */,
 				1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */,
+				1D89CE6F260114FA00B7B478 /* Constants.swift in Sources */,
 				1D88627B2600099A00A7BC46 /* User.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
 				1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */,
@@ -215,6 +314,7 @@
 /* Begin XCBuildConfiguration section */
 		1D59A6F825F92BA700433C22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B4C4A61F1CDD170785DA95F /* Pods-Slacker Clone.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -331,6 +431,7 @@
 		};
 		1D59A6FB25F92BA700433C22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B4C4A61F1CDD170785DA95F /* Pods-Slacker Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +451,7 @@
 		};
 		1D59A6FC25F92BA700433C22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87FE170DC4FA487A95B9A44A /* Pods-Slacker Clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
