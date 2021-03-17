@@ -376,6 +376,7 @@
 		};
 		1D59A6F925F92BA700433C22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F65253EE83C640E9DBB6736F /* Pods-Slacker Clone.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -451,7 +452,7 @@
 		};
 		1D59A6FC25F92BA700433C22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87FE170DC4FA487A95B9A44A /* Pods-Slacker Clone.release.xcconfig */;
+			baseConfigurationReference = 7B4C4A61F1CDD170785DA95F /* Pods-Slacker Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

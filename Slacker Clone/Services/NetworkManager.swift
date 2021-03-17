@@ -51,8 +51,8 @@ class NetworkManager {
     func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
         let lowerCasedEmail = email.lowercased()
         
-        let header: HTTPHeaders? = [
-            "Content-Type" : "applicatioin/json"
+        let header: HTTPHeaders = [
+            "Content-Type" : "application/json"
         ]
         
         let body: [String : Any] = [
@@ -60,10 +60,10 @@ class NetworkManager {
             "password": password
         ]
         
-        AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header!).responseString { (response) in
+        AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
             if response.error == nil {
                 completion(true)
-                print(response)
+                print(String(data: response.data!, encoding: .utf8)!)
             } else {
                 completion(false)
                 debugPrint(response.error as Any)

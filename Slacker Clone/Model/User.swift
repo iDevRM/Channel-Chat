@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct User {
-    var userName: String?
+struct User: Codable {
+    var userName: String
     var email:    String
     var password: String
-    var avatar:   UIImage?
+    var avatar:   Data?
 }

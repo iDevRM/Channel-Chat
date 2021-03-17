@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var selectImageButton: UIButton!
     
@@ -19,28 +19,48 @@ class RegisterViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     var userCount = 0
-    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self
         emailTextField.delegate = self
         nameTextField.delegate = self
-    
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        navigationController?.delegate = self
+        
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-        guard passwordTextField.hasText, emailTextField.hasText else { return }
-        let user = User(userName: nil, email: emailTextField.text!, password: passwordTextField.text!, avatar: nil)
-        userCount += 1
+        guard passwordTextField.hasText,
+              emailTextField.hasText,
+              nameTextField.hasText,
+              imageView.image != nil else { return }
+        
+        let encodedImage = imageView.image?.pngData()
+        
+        let user = User(userName: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, avatar: encodedImage ?? nil )
+        
+        do {
+            let encoder = JSONEncoder()
+
+            let data = try encoder.encode(user)
+
+            UserDefaults.standard.set(data, forKey: user.userName)
+
+        } catch {
+            print("Unable to Encode User (\(error.localizedDescription))")
+        }
         
         NetworkManager.instance.registerUser(email: user.email, password: user.password) { (completion) in
-            print("done")
+            self.dismiss(animated: true, completion: nil)
         }
         
     }
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
     }
     
 }
@@ -52,5 +72,14 @@ extension RegisterViewController: UITextFieldDelegate {
         } else {
             return false
         }
+    }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            imageView.image = image
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }
