@@ -12,48 +12,28 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var selectImageButton: UIButton!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var registerButton: UIButton!
-    
-    let defaults = UserDefaults.standard
-    var userCount = 0
+    @IBOutlet weak var emailTextField:    UITextField!
+    @IBOutlet weak var nameTextField:     UITextField!
+    @IBOutlet weak var imageView:         UIImageView!
+    @IBOutlet weak var registerButton:    UIButton!
+
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextField.delegate = self
-        emailTextField.delegate = self
-        nameTextField.delegate = self
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        navigationController?.delegate = self
-        
+        passwordTextField.delegate     = self
+        emailTextField.delegate        = self
+        nameTextField.delegate         = self
+        imagePicker                    = UIImagePickerController()
+        imagePicker.delegate           = self
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard passwordTextField.hasText,
-              emailTextField.hasText,
-              nameTextField.hasText,
-              imageView.image != nil else { return }
+              emailTextField.hasText else { return }
         
-        let encodedImage = imageView.image?.pngData()
         
-        let user = User(userName: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, avatar: encodedImage ?? nil )
-        
-        do {
-            let encoder = JSONEncoder()
-
-            let data = try encoder.encode(user)
-
-            UserDefaults.standard.set(data, forKey: user.userName)
-
-        } catch {
-            print("Unable to Encode User (\(error.localizedDescription))")
-        }
-        
-        NetworkManager.instance.registerUser(email: user.email, password: user.password) { (completion) in
+        NetworkManager.instance.registerUser(email: emailTextField.text!, password: passwordTextField.text!) { (completion) in
             self.dismiss(animated: true, completion: nil)
         }
         

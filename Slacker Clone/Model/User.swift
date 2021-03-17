@@ -8,8 +8,9 @@
 import UIKit
 
 struct User: Codable {
-    var userName: String
-    var email:    String
-    var password: String
-    var avatar:   Data?
+    var _id:           String
+    var name:          String
+    var email:         String
+    var avatarName:    String
+    var avatarColor:   String
 }

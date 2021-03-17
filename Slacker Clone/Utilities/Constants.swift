@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Alamofire
 
 
 
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
-
+let HEADER: HTTPHeaders = [
+    "Content-Type" : "application/json"
+]

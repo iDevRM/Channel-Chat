@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
         channelsTableView.delegate   = self
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
-        
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

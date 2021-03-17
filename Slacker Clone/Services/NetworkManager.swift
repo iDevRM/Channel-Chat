@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
 class NetworkManager {
@@ -49,18 +50,15 @@ class NetworkManager {
     }
     
     func registerUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
-        let lowerCasedEmail = email.lowercased()
         
-        let header: HTTPHeaders = [
-            "Content-Type" : "application/json"
-        ]
+        let lowerCasedEmail = email.lowercased()
         
         let body: [String : Any] = [
             "email": lowerCasedEmail,
             "password": password
         ]
         
-        AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
+        AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
             if response.error == nil {
                 completion(true)
                 print(String(data: response.data!, encoding: .utf8)!)
@@ -69,8 +67,60 @@ class NetworkManager {
                 debugPrint(response.error as Any)
             }
         }
+    }
+    
+    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void ) {
         
+        let lowerCasedEmail = email.lowercased()
+        
+        let body: [String : Any] = [
+            "email": lowerCasedEmail,
+            "password": password
+        ]
+        
+        AF.request(urlWithEndpoint(type: .loginUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            if response.error == nil {
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                    self.userEmail = json["user"].stringValue
+                    self.authToken = json["token"].stringValue
+                    self.isLoggedIn = true
+                    completion(true)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+            } else {
+                completion(false)
+                debugPrint(response.error!)
+            }
+        }
+    }
+    
+    func createUser(name: String, email: String, avatarColor: String, avatarName: String, completion: @escaping (Bool) -> Void) {
+        
+        let lowecasedEmail = email.lowercased()
+        
+        let header: HTTPHeaders = [
+            "Authorization" : "Bearer \(authToken)",
+            "Content-Type" : "application/json"
+        ]
+        
+        let body: [String: Any] = [
+            "name": name,
+            "email": lowecasedEmail,
+            "avatarColor": avatarColor,
+            "avatarName": avatarName
+        ]
+        
+        AF.request(urlWithEndpoint(type: .addUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            
+        }
         
     }
+    
 }
+
+
 
