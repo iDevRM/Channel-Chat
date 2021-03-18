@@ -170,7 +170,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="R1D-wX-YPu">
                                 <rect key="frame" x="20" y="50" width="374" height="486"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KIF-CN-iue">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.questionmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KIF-CN-iue">
                                         <rect key="frame" x="-1.6666666666666572" y="2.3333333333333286" width="375.66666666666669" height="170.33333333333331"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -178,7 +178,7 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0m-Rv-qYz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0m-Rv-qYz">
                                         <rect key="frame" x="0.0" y="232.66666666666669" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -228,11 +228,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="u0m-Rv-qYz" id="ImN-MH-gbM"/>
                         <outlet property="icon" destination="KIF-CN-iue" id="vLs-PW-5fG"/>
                         <outlet property="logInButton" destination="NkM-2W-9CW" id="7Ow-M6-cal"/>
                         <outlet property="passwordTextField" destination="vsE-QM-rzj" id="qc0-3w-28t"/>
                         <outlet property="registerButton" destination="4UW-QK-4WV" id="ev6-Rh-8hT"/>
-                        <outlet property="userNameTextField" destination="u0m-Rv-qYz" id="ImN-MH-gbM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltl-uV-GTh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -394,7 +394,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
-        <image name="person.crop.circle.badge.checkmark" catalog="system" width="128" height="113"/>
+        <image name="person.crop.circle.badge.questionmark" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
