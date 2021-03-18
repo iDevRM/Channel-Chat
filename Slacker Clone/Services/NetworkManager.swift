@@ -116,6 +116,23 @@ class NetworkManager {
         
         AF.request(urlWithEndpoint(type: .addUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
             
+            if response.error == nil {
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                    let userId = json["_id"].stringValue
+                    let userName = json["name"].stringValue
+                    let email = json["email"].stringValue
+                    let avatarColor = json["avatarColor"].stringValue
+                    let avatarName = json["avatarName"].stringValue
+                    
+                    
+                } catch {
+                    debugPrint(error)
+                }
+                
+            }
+            
         }
         
     }
