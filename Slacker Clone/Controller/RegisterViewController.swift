@@ -29,14 +29,29 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-        guard passwordTextField.hasText,
-              emailTextField.hasText else { return }
+        guard passwordTextField.hasText, emailTextField.hasText else { return }
         
         
-        NetworkManager.instance.registerUser(email: emailTextField.text!, password: passwordTextField.text!) { (completion) in
-            self.dismiss(animated: true, completion: nil)
+        NetworkManager.instance.registerUser(email: emailTextField.text!, password: passwordTextField.text!) { (success) in
+            
+            if success {
+                NetworkManager.instance.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (success) in
+                    
+                    if success {
+                        NetworkManager.instance.createUser(name: self.nameTextField.text!, email: self.emailTextField.text!, avatarColor: "", avatarName: "") { (success) in
+                            
+                            if success {
+                                let alert = UIAlertController(title: "You have successfully registered a new user", message: "You can now log in", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                    self.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                    }
+                }
+            }
         }
-        
     }
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {

@@ -23,7 +23,14 @@ class LogInViewController: UIViewController {
         
     }
     @IBAction func logInButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "afterLogInSegue", sender: nil)
+        NetworkManager.instance.loginUser(email: userNameTextField.text!, password: passwordTextField.text!) { (success) in
+            if success {
+                self.performSegue(withIdentifier: "afterLogInSegue", sender: nil)
+                print(NetworkManager.instance.authToken)
+                print(NetworkManager.instance.userEmail)
+            }
+        }
+        
     }
     
     
