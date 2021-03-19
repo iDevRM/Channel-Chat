@@ -10,7 +10,6 @@ import UIKit
 class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var selectImageButton: UIButton!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField:    UITextField!
     @IBOutlet weak var nameTextField:     UITextField!

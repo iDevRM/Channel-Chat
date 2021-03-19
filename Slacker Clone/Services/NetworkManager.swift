@@ -133,6 +133,10 @@ class NetworkManager {
             }
         }
     }
+    
+    func findUserByEmail(completion: @escaping (Bool) -> Void) {
+        
+    }
 }
 
 

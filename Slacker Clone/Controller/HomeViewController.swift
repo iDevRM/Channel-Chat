@@ -77,7 +77,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return createCell(withIndentifier: "channelCell", imageName: "number", title: "\(placeHolderData[indexPath.row - 2].name)", color: nil)
         }
-        
     }
-    
 }

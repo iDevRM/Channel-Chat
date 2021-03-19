@@ -30,11 +30,9 @@ class LogInViewController: UIViewController {
         
         NetworkManager.instance.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (success) in
             if success {
-                NetworkManager.instance.createUser(name: "Rick", email: self.emailTextField.text!, avatarColor: "", avatarName: "") { (success) in
-                    if success {
-                        self.performSegue(withIdentifier: "logInSegue", sender: nil)
-                    }
-                }
+                
+                self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                
             }
         }
     }
