@@ -18,6 +18,8 @@ class NetworkManager {
     
     let defaults = UserDefaults.standard
     
+    var loggedInUser: User?
+    
     var isLoggedIn: Bool {
         get {
             return defaults.bool(forKey: LOGGED_IN_KEY)
@@ -45,6 +47,7 @@ class NetworkManager {
         }
     }
     
+    
     func urlWithEndpoint(type: URLEndpoint) -> String {
         return "\(BASE_URL)\(type.rawValue)"
     }
@@ -61,7 +64,6 @@ class NetworkManager {
         AF.request(urlWithEndpoint(type: .reigisterUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
             if response.error == nil {
                 completion(true)
-                print(String(data: response.data!, encoding: .utf8)!)
             } else {
                 completion(false)
                 debugPrint(response.error as Any)
@@ -78,24 +80,24 @@ class NetworkManager {
             "password": password
         ]
         
-        AF.request(urlWithEndpoint(type: .loginUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
-            if response.error == nil {
-                guard let data = response.data else { return }
-                do {
-                    let json = try JSON(data: data)
-                    self.userEmail = json["user"].stringValue
-                    self.authToken = json["token"].stringValue
-                    self.isLoggedIn = true
-                    completion(true)
-                } catch {
-                    print(error.localizedDescription)
-                }
-                
-            } else {
+        AF.request(urlWithEndpoint(type: .loginUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString(completionHandler: { (response) in
+            if response.description.contains("invalid") {
+                print(response.description)
                 completion(false)
-                debugPrint(response.error!)
+            } else {
+                if let data = response.data {
+                    do {
+                        let json = try JSON(data: data)
+                        self.userEmail = json["email"].stringValue
+                        self.authToken = json["token"].stringValue
+                        self.isLoggedIn = true
+                    } catch {
+                        print(error)
+                    }
+                }
+                completion(true)
             }
-        }
+        })
     }
     
     func createUser(name: String, email: String, avatarColor: String, avatarName: String, completion: @escaping (Bool) -> Void) {
@@ -117,21 +119,17 @@ class NetworkManager {
         AF.request(urlWithEndpoint(type: .addUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
             
             if response.error == nil {
-//                guard let data = response.data else { return }
-//                do {
-//                    let json = try JSON(data: data)
-//                    let userId = json["_id"].stringValue
-//                    let userName = json["name"].stringValue
-//                    let email = json["email"].stringValue
-//                    let avatarColor = json["avatarColor"].stringValue
-//                    let avatarName = json["avatarName"].stringValue
-//
-//                } catch {
-//                    debugPrint(error)
-//                }
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                    let newUser = User(_id: json["_id"].stringValue, name: json["name"].stringValue, email: json["email"].stringValue, avatarName: json["avatarName"].stringValue, avatarColor: json["avatarColor"].stringValue)
+                    self.loggedInUser = newUser
+                } catch {
+                    debugPrint(error)
+                }
                 completion(true)
             } else {
-                print(response.error?.localizedDescription)
+                print(response.error!.localizedDescription)
             }
         }
     }

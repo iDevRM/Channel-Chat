@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
     @IBOutlet weak var searchBar:         UISearchBar!
     @IBOutlet weak var channelsTableView: UITableView!
     @IBOutlet weak var button:            UIButton!
@@ -17,12 +18,16 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let user = NetworkManager.instance.loggedInUser {
+            navigationItem.title = "\(user.name)'s channel"
+        }
         channelsTableView.delegate   = self
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        
     }
     
 }
@@ -74,6 +79,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
     
 }

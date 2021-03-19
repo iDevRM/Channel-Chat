@@ -24,17 +24,17 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
     }
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {
-        NetworkManager.instance.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { [self] (success) in
+        
+        NetworkManager.instance.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (success) in
             if success {
-                
-                self.performSegue(withIdentifier: "afterLogInSegue", sender: nil)
-                
-            } else {
-                
+                NetworkManager.instance.createUser(name: "Rick", email: self.emailTextField.text!, avatarColor: "", avatarName: "") { (success) in
+                    if success {
+                        self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                    }
+                }
             }
         }
     }
