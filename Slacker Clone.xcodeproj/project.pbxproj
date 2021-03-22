@@ -15,6 +15,7 @@
 		1D59A6F625F92BA700433C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F425F92BA700433C22 /* LaunchScreen.storyboard */; };
 		1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* HomeViewController.swift */; };
 		1D59A70725F94CBB00433C22 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70625F94CBB00433C22 /* Channel.swift */; };
+		1D5E194026091BF300FD3796 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E193F26091BF300FD3796 /* SocketService.swift */; };
 		1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */; };
 		1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8862772600065800A7BC46 /* RegisterViewController.swift */; };
 		1D88627B2600099A00A7BC46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88627A2600099A00A7BC46 /* User.swift */; };
@@ -34,6 +35,7 @@
 		1D59A6F725F92BA700433C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D59A70325F93E0100433C22 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D59A70625F94CBB00433C22 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1D5E193F26091BF300FD3796 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1D8862772600065800A7BC46 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1D88627A2600099A00A7BC46 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				1D88627D2600102700A7BC46 /* NetworkManager.swift */,
+				1D5E193F26091BF300FD3796 /* SocketService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				1D59A70725F94CBB00433C22 /* Channel.swift in Sources */,
 				1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */,
 				1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */,
+				1D5E194026091BF300FD3796 /* SocketService.swift in Sources */,
 				1D89CE6F260114FA00B7B478 /* Constants.swift in Sources */,
 				1D88627B2600099A00A7BC46 /* User.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
