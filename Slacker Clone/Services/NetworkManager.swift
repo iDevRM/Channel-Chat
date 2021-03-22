@@ -81,8 +81,8 @@ class NetworkManager {
         ]
         
         AF.request(urlWithEndpoint(type: .loginUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString(completionHandler: { (response) in
+            
             if response.description.contains("invalid") {
-                print(response.description)
                 completion(false)
             } else {
                 if let data = response.data {
@@ -119,23 +119,41 @@ class NetworkManager {
         AF.request(urlWithEndpoint(type: .addUser), method: HTTPMethod.post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
             
             if response.error == nil {
-                guard let data = response.data else { return }
-                do {
-                    let json = try JSON(data: data)
-                    let newUser = User(_id: json["_id"].stringValue, name: json["name"].stringValue, email: json["email"].stringValue, avatarName: json["avatarName"].stringValue, avatarColor: json["avatarColor"].stringValue)
-                    self.loggedInUser = newUser
-                } catch {
-                    debugPrint(error)
-                }
                 completion(true)
             } else {
+                completion(false)
                 print(response.error!.localizedDescription)
             }
         }
     }
     
-    func findUserByEmail(completion: @escaping (Bool) -> Void) {
+    func findUserByEmail(email: String, completion: @escaping (Bool) -> Void) {
+        let url = "\(urlWithEndpoint(type: .byUserEmail))\(email.lowercased())"
         
+        let header: HTTPHeaders = [
+            "Authorization" : "Bearer \(authToken)"
+        ]
+        
+        AF.request(url, method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            
+            if response.error == nil {
+                guard let data = response.data else { return }
+                
+                do {
+                    let json = try JSON(data: data)
+                    let user = User(_id: json["_id"].stringValue, name: json["name"].stringValue, email: json["email"].stringValue, avatarName: json["avatarName"].stringValue, avatarColor: json["avatarColor"].stringValue)
+                    self.loggedInUser = user
+                    completion(true)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+            } else {
+                completion(false)
+                print(response.error!.localizedDescription)
+            }
+            
+        }
     }
 }
 

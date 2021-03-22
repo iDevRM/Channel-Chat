@@ -14,3 +14,10 @@ let USER_EMAIL = "userEmail"
 let HEADER: HTTPHeaders = [
     "Content-Type" : "application/json"
 ]
+
+enum URLEndpoint: String {
+    case reigisterUser = "/v1/account/register"
+    case loginUser     = "/v1/account/login"
+    case addUser       = "/v1/user/add"
+    case byUserEmail   = "/v1//user/byEmail/"
+}

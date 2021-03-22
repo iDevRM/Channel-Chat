@@ -18,12 +18,14 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = NetworkManager.instance.loggedInUser {
-            navigationItem.title = "\(user.name)'s channel"
-        }
         channelsTableView.delegate   = self
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if let user = NetworkManager.instance.loggedInUser {
+            navigationItem.title = "\(user.name )'s channel"
+        }
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

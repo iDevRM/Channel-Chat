@@ -27,12 +27,17 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {
+        guard emailTextField.hasText, passwordTextField.hasText else { return }
         
         NetworkManager.instance.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (success) in
+            
             if success {
                 
-                self.performSegue(withIdentifier: "logInSegue", sender: nil)
-                
+                NetworkManager.instance.findUserByEmail(email: self.emailTextField.text!) { (success) in
+                    
+                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                    
+                }
             }
         }
     }
