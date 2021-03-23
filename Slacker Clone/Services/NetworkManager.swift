@@ -18,7 +18,7 @@ class NetworkManager {
     
     let defaults = UserDefaults.standard
     
-    var loggedInUser: User?
+    var loggedInUser: User? 
     
     var isLoggedIn: Bool {
         get {
