@@ -27,6 +27,19 @@ class MessageViewController: UIViewController {
     
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
+        
+        if NetworkManager.instance.isLoggedIn {
+            let channelId = "592cd40e39179c0023f3531f"
+            
+            SocketService.instance.addMessage(messageBody: messageTextField.text!, userId: loggedInUser!._id, channelId: channelId) { (success) in
+                
+                if success {
+                    self.messageTextField.text = ""
+                }
+                
+            }
+
+        }
     }
     
    
