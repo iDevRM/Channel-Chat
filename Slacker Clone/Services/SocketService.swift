@@ -8,8 +8,9 @@
 import Foundation
 import SocketIO
 
-let manager = SocketManager(socketURL: URL(string: "\(NetworkManager.instance.BASE_URL)")!, config: [.log(true), .compress])
-let socket = manager.defaultSocket
+let manager = SocketManager(socketURL: URL(string:"\(NetworkManager.instance.BASE_URL)")!)
+let defaultNamespaceSocket = manager.defaultSocket
+let swiftSocket = manager.socket(forNamespace: "/swift")
 
 
     
@@ -25,7 +26,7 @@ class SocketService: NSObject {
 //        socket.on("newMessage") {data, ack in
 //            print("socket connected")
 //        }
-
+//
 //        socket.on("newMessage") {data, ack in
 //            guard let cur = data[0] as? Double else { return }
 //
@@ -40,18 +41,18 @@ class SocketService: NSObject {
 //            ack.with("Got your currentAmount", "dude")
 //        }
 
-        socket.connect()
+        swiftSocket.connect()
     }
     
     func closeConnection() {
-        socket.disconnect()
+        swiftSocket.disconnect()
     }
     
     func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping (Bool) -> Void ) {
         
         let user = NetworkManager.instance.loggedInUser!
         
-        socket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor )
+        swiftSocket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor )
         
         completion(true)
     }
