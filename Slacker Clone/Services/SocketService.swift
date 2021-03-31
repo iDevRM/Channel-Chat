@@ -8,13 +8,10 @@
 import Foundation
 import SocketIO
 
-
-
-
-    
 class SocketService: NSObject {
     
     let manager = SocketManager(socketURL: URL(string: "\(NetworkManager.instance.BASE_URL)")!, config: [.log(true), .compress])
+    
    
     static let instance = SocketService()
     
@@ -26,12 +23,13 @@ class SocketService: NSObject {
     func establishConnection() {
         
         manager.defaultSocket.connect()
-
         
     }
     
     func stopConnection() {
+        
         manager.defaultSocket.disconnect()
+         
     }
     
    
