@@ -8,27 +8,36 @@
 import Foundation
 import SocketIO
 
+
+let manager = SocketManager(socketURL: URL(string: "\(NetworkManager.instance.BASE_URL)")!, config: [.log(true), .compress])
+let socket = manager.defaultSocket
+
+
 class SocketService: NSObject {
-    
-    let manager = SocketManager(socketURL: URL(string: "\(NetworkManager.instance.BASE_URL)")!, config: [.log(true), .compress])
     
    
     static let instance = SocketService()
     
     override init() {
         super.init()
-       
+        
     }
     
     func establishConnection() {
         
-        manager.defaultSocket.connect()
+        
+        
+        socket.on(clientEvent: .connect) {data, ack in
+            print("socket connected")
+        }
+
+        socket.connect()
         
     }
     
     func stopConnection() {
         
-        manager.defaultSocket.disconnect()
+        socket.disconnect()
          
     }
     
@@ -37,7 +46,7 @@ class SocketService: NSObject {
     func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping (Bool) -> Void ) {
 
         if let user = NetworkManager.instance.loggedInUser {
-            manager.defaultSocket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor )
+            socket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor )
 
             completion(true)
         }
