@@ -150,8 +150,16 @@
                             <constraint firstItem="hwx-Eb-Ovv" firstAttribute="leading" secondItem="bBr-3q-60W" secondAttribute="leading" id="nhu-6f-Bgb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Channels" largeTitleDisplayMode="never" id="Vgg-j6-MSy"/>
+                    <navigationItem key="navigationItem" title="Channels" largeTitleDisplayMode="never" id="Vgg-j6-MSy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Vy-ka-lRY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addChannelTapped:" destination="pIF-hw-h1h" id="Kph-iK-a9H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addChannelBarButton" destination="3Vy-ka-lRY" id="vQ5-bQ-jvX"/>
                         <outlet property="button" destination="PEh-YR-ldo" id="mZp-H3-Kde"/>
                         <outlet property="channelsTableView" destination="lH6-va-SFI" id="UlG-HD-lTb"/>
                         <outlet property="searchBar" destination="hwx-Eb-Ovv" id="IOb-Tz-MNg"/>

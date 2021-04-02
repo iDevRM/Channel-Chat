@@ -12,7 +12,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar:         UISearchBar!
     @IBOutlet weak var channelsTableView: UITableView!
     @IBOutlet weak var button:            UIButton!
-
+    @IBOutlet weak var addChannelBarButton: UIBarButtonItem!
+    
     
     var placeHolderData = [Channel(name: "apple-events"),Channel(name: "beginner-questions"),Channel(name: "career-advice"),Channel(name: "course-github-followers"),Channel(name: "general"),Channel(name: "resources")]
 
@@ -31,6 +32,37 @@ class HomeViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         
     }
+    
+    @IBAction func addChannelTapped(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Add New Channel", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Channel name"
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Channel description"
+        }
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            if alert.textFields != nil {
+                
+                if let channelName = alert.textFields?[0].text, let channelDescription = alert.textFields?[1].text {
+                    
+                    SocketService.instance.addChannel(name: channelName, description: channelDescription) { (success) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+
+    }
+    
     
 }
 

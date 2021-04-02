@@ -36,13 +36,9 @@ class MessageViewController: UIViewController {
                 if success {
                     self.messageTextField.text = ""
                 }
-                
             }
-
         }
     }
-    
-   
 }
 
 extension MessageViewController: UITextFieldDelegate, UINavigationControllerDelegate {

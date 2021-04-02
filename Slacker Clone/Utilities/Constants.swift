@@ -20,4 +20,5 @@ enum URLEndpoint: String {
     case loginUser     = "/v1/account/login"
     case addUser       = "/v1/user/add"
     case byUserEmail   = "/v1//user/byEmail/"
+    case addChannel    = "/v1/channel/add"
 }

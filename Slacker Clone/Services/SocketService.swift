@@ -28,7 +28,7 @@ class SocketService: NSObject {
         
         
         socket.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
+            print("Socket Connected")
         }
 
         socket.connect()
@@ -43,13 +43,21 @@ class SocketService: NSObject {
     
    
     
-    func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping (Bool) -> Void ) {
+    func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping (Bool) -> Void) {
 
         if let user = NetworkManager.instance.loggedInUser {
             socket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor )
 
             completion(true)
         }
+        
+    }
+    
+    func addChannel(name: String, description: String, completion: @escaping (Bool) -> Void) {
+        
+        socket.emit("newChannel", name, description)
+        
+        completion(true)
         
     }
     
