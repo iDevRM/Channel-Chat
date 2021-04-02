@@ -23,6 +23,9 @@ class HomeViewController: UIViewController {
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
     }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         if let user = NetworkManager.instance.loggedInUser {
             navigationItem.title = "\(user.name )'s channel"
@@ -57,7 +60,12 @@ class HomeViewController: UIViewController {
             }
         }
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
         alert.addAction(action)
+        alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
 
