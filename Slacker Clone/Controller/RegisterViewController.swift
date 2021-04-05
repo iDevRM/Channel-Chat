@@ -17,6 +17,10 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var registerButton:    UIButton!
 
     var imagePicker: UIImagePickerController!
+    let defaultPicture = "profileDefault"
+    let defaultColor = "[0.5, 0.5, 0.5, 1]"
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +58,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {
-        present(imagePicker, animated: true, completion: nil)
+        performSegue(withIdentifier: "AvatarImageSegue", sender: nil)
     }
     
 }
