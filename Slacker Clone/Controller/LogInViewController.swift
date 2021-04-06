@@ -22,7 +22,7 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
+        emailTextField.delegate    = self
         passwordTextField.delegate = self
     }
     
@@ -51,5 +51,34 @@ class LogInViewController: UIViewController {
 }
 
 extension LogInViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            if !textField.text!.contains("@") || !textField.text!.contains(".com") {
+                emailTextField.layer.borderColor = UIColor.red.cgColor
+                emailTextField.layer.borderWidth = 2
+                emailTextField.text = ""
+                emailTextField.placeholder = "must be a vaild email"
+                return false
+            } else {
+                return true
+            }
+        case passwordTextField:
+            if let count = textField.text?.count {
+                if count < 6 {
+                    passwordTextField.layer.borderColor = UIColor.red.cgColor
+                    passwordTextField.layer.borderWidth = 2
+                    passwordTextField.text = ""
+                    passwordTextField.placeholder = "password must be six digits or more"
+                    return false
+                }
+            } else {
+                return true
+            }
+            
+        default:
+            break
+        }
+        return true
+    }
 }

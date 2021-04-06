@@ -14,8 +14,6 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

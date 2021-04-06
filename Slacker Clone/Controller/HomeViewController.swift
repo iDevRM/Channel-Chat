@@ -24,8 +24,6 @@ class HomeViewController: UIViewController {
         button.layer.cornerRadius    = 25
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         if let user = NetworkManager.instance.loggedInUser {
             navigationItem.title = "\(user.name )'s channel"

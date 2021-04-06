@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UINavigationControllerDelegate, UIColorPickerViewControllerDelegate {
     
     @IBOutlet weak var selectImageButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -15,20 +15,40 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var nameTextField:     UITextField!
     @IBOutlet weak var imageView:         UIImageView!
     @IBOutlet weak var registerButton:    UIButton!
-
-    var imagePicker: UIImagePickerController!
+    @IBOutlet weak var chooseColorButton: UIButton!
+    
+    let colorPicker = UIColorPickerViewController()
+    
+    
     let defaultPicture = "profileDefault"
     let defaultColor = "[0.5, 0.5, 0.5, 1]"
-   
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate     = self
         emailTextField.delegate        = self
         nameTextField.delegate         = self
-        imagePicker                    = UIImagePickerController()
-        imagePicker.delegate           = self
+        chooseColorButton.layer.cornerRadius = 10
+        colorPicker.supportsAlpha = true
+        colorPicker.selectedColor = UIColor.systemTeal
+        colorPicker.delegate = self
+    }
+   
+    
+    
+    var newAvatar: UIImage {
+        get {
+            
+            return UIImage(named: NetworkManager.instance.loggedInUser?.avatarName ?? defaultPicture)!
+            
+        }
+        set {
+            
+            imageView.image = newValue
+            loadView()
+            
+        }
+        
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
@@ -61,6 +81,17 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
         performSegue(withIdentifier: "AvatarImageSegue", sender: nil)
     }
     
+    @IBAction func chooseColorTapped(_ sender: UIButton) {
+        
+        present(colorPicker, animated: true)
+        
+    }
+    
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        chooseColorButton.backgroundColor = colorPicker.selectedColor
+    }
+    
+    
 }
 
 extension RegisterViewController: UITextFieldDelegate {
@@ -70,14 +101,5 @@ extension RegisterViewController: UITextFieldDelegate {
         } else {
             return false
         }
-    }
-}
-
-extension RegisterViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            imageView.image = image
-        }
-        picker.dismiss(animated: true, completion: nil)
     }
 }
