@@ -22,11 +22,17 @@ class HomeViewController: UIViewController {
         channelsTableView.delegate   = self
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if let user = NetworkManager.instance.loggedInUser {
             navigationItem.title = "\(user.name )'s channel"
+        }
+        MessageService.instance.findAllChannels { (success) in
+            for channel in MessageService.instance.channels {
+                print(channel.name )
+            }
         }
     }
     
@@ -106,13 +112,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return createCell(withIndentifier: "channelCell", imageName: "square.stack.3d.down.right", title: "Threads", color: nil)
         case 1:
             return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Channels", color: nil)
-        case 8:
+        case placeHolderData.count + 1:
             return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
-        case 9:
+        case placeHolderData.count + 2:
             return createCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
-        case 10:
+        case placeHolderData.count + 3:
             return createCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
-        case 11:
+        case placeHolderData.count + 4:
             return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
             return createCell(withIndentifier: "channelCell", imageName: "number", title: "\(placeHolderData[indexPath.row - 2].name)", color: nil)

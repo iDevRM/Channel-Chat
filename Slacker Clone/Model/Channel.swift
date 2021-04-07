@@ -9,4 +9,6 @@ import Foundation
 
 struct Channel {
     var name: String
+    var desciption: String?
+    var id: String?
 }

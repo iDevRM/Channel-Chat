@@ -14,6 +14,9 @@ let USER_EMAIL = "userEmail"
 let HEADER: HTTPHeaders = [
     "Content-Type" : "application/json"
 ]
+let BEARER_HEADER: HTTPHeaders = [
+    "Authorization" : "Bearer \(NetworkManager.instance.authToken)"
+]
 
 enum URLEndpoint: String {
     case reigisterUser = "/v1/account/register"
@@ -21,4 +24,5 @@ enum URLEndpoint: String {
     case addUser       = "/v1/user/add"
     case byUserEmail   = "/v1//user/byEmail/"
     case addChannel    = "/v1/channel/add"
+    case getChannels   = "/v1/channel"
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D19513025FAC53E0065DC4C /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D19512F25FAC53E0065DC4C /* ChannelTableViewCell.swift */; };
+		1D20D245261E295E00BF901E /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D20D244261E295E00BF901E /* MessageService.swift */; };
 		1D59A6EA25F92BA600433C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A6E925F92BA600433C22 /* AppDelegate.swift */; };
 		1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */; };
 		1D59A6F125F92BA600433C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6EF25F92BA600433C22 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1D19512F25FAC53E0065DC4C /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
+		1D20D244261E295E00BF901E /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		1D59A6E625F92BA600433C22 /* Slacker Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slacker Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D59A6E925F92BA600433C22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D59A6EB25F92BA600433C22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				1D88627D2600102700A7BC46 /* NetworkManager.swift */,
 				1D5E193F26091BF300FD3796 /* SocketService.swift */,
+				1D20D244261E295E00BF901E /* MessageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				1D59A70725F94CBB00433C22 /* Channel.swift in Sources */,
 				1DEE2BE5261B761800C08C11 /* AvatarImageViewController.swift in Sources */,
 				1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */,
+				1D20D245261E295E00BF901E /* MessageService.swift in Sources */,
 				1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */,
 				1D5E194026091BF300FD3796 /* SocketService.swift in Sources */,
 				1D89CE6F260114FA00B7B478 /* Constants.swift in Sources */,
