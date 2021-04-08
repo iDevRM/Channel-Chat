@@ -9,9 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var searchBar:         UISearchBar!
-    @IBOutlet weak var channelsTableView: UITableView!
-    @IBOutlet weak var button:            UIButton!
+    @IBOutlet weak var searchBar:           UISearchBar!
+    @IBOutlet weak var channelsTableView:   UITableView!
+    @IBOutlet weak var button:              UIButton!
     @IBOutlet weak var addChannelBarButton: UIBarButtonItem!
     
     
@@ -30,9 +30,11 @@ class HomeViewController: UIViewController {
             navigationItem.title = "\(user.name )'s channel"
         }
         MessageService.instance.findAllChannels { (success) in
+            self.placeHolderData.removeAll()
             for channel in MessageService.instance.channels {
-                print(channel.name )
+                self.placeHolderData.append(channel)
             }
+            self.channelsTableView.reloadData()
         }
     }
     
@@ -90,9 +92,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "\(withIndentifier)") as? ChannelTableViewCell {
                 
                 if imageName != nil {
-                    cell.configCell(imageName: "\(imageName!)", title: "\(title)")
+                    cell.configCell(imageName: imageName!, title: title)
                 } else {
-                    cell.configCell(imageName: nil, title: "\(title)")
+                    cell.configCell(imageName: nil, title: title)
                 }
                 
                 if color != nil {
@@ -112,16 +114,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return createCell(withIndentifier: "channelCell", imageName: "square.stack.3d.down.right", title: "Threads", color: nil)
         case 1:
             return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Channels", color: nil)
-        case placeHolderData.count + 1:
-            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
         case placeHolderData.count + 2:
-            return createCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
         case placeHolderData.count + 3:
-            return createCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+            return createCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
         case placeHolderData.count + 4:
+            return createCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+        case placeHolderData.count + 5:
             return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
-            return createCell(withIndentifier: "channelCell", imageName: "number", title: "\(placeHolderData[indexPath.row - 2].name)", color: nil)
+            return createCell(withIndentifier: "channelCell", imageName: "number", title: placeHolderData[indexPath.row - 2].name , color: nil)
         }
     }
 }
