@@ -31,7 +31,7 @@
         <!--Channels-->
         <scene sceneID="aym-oh-b5R">
             <objects>
-                <viewController id="pIF-hw-h1h" customClass="HomeViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="pIF-hw-h1h" customClass="HomeViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIx-4D-xfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,11 +56,11 @@
                                     <action selector="buttonTapped:" destination="pIF-hw-h1h" eventType="touchUpInside" id="2uD-Yr-18s"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lH6-va-SFI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lH6-va-SFI">
                                 <rect key="frame" x="20" y="122" width="374" height="470"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" rowHeight="59" id="5TO-H5-H6r" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="channelCell" rowHeight="59" id="5TO-H5-H6r" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5TO-H5-H6r" id="2vE-iA-3gX">
@@ -100,7 +100,7 @@
                                         <connections>
                                             <outlet property="label" destination="Bwy-HD-qlX" id="Fl6-MG-oT5"/>
                                             <outlet property="thumbnail" destination="J3K-rX-hne" id="Iy7-di-M5w"/>
-                                            <segue destination="dlX-Tg-AcU" kind="show" id="TMx-8l-1MP"/>
+                                            <segue destination="dlX-Tg-AcU" kind="show" identifier="ToMessageVC" id="jaL-nM-WUl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dividerCell" rowHeight="59" id="uGh-Rn-gBZ" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
@@ -168,12 +168,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjo-w6-7i3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="-430"/>
+            <point key="canvasLocation" x="1307" y="-505"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="FCY-bO-MGt">
             <objects>
-                <viewController id="dlX-Tg-AcU" customClass="MessageViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="dlX-Tg-AcU" customClass="MessageViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vC-r4-oCC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKv-Es-b1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="-430.43478260869568"/>
+            <point key="canvasLocation" x="2251" y="-505"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="Pkj-eq-vJ6">
@@ -597,7 +597,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4F-Qq-8mZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="365.60000000000002" y="-430.04926108374389"/>
+            <point key="canvasLocation" x="400" y="-505"/>
         </scene>
     </scenes>
     <resources>

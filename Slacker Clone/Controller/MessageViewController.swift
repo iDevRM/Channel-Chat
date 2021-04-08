@@ -14,13 +14,18 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
+    var chosenChannel: Channel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         messageTextField.delegate = self
-        
+        navigationController?.delegate = self
+        if chosenChannel != nil {
+            print(chosenChannel!.name)
+            navigationItem.title = chosenChannel!.name
+        }
     }
     
     

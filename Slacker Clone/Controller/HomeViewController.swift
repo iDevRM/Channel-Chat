@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var button:              UIButton!
     @IBOutlet weak var addChannelBarButton: UIBarButtonItem!
     
-    
+    var channelSelected: Channel?
     var placeHolderData = [Channel(name: "apple-events"),Channel(name: "beginner-questions"),Channel(name: "career-advice"),Channel(name: "course-github-followers"),Channel(name: "general"),Channel(name: "resources")]
 
     override func viewDidLoad() {
@@ -22,25 +22,18 @@ class HomeViewController: UIViewController {
         channelsTableView.delegate   = self
         channelsTableView.dataSource = self
         button.layer.cornerRadius    = 25
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if let user = NetworkManager.instance.loggedInUser {
-            navigationItem.title = "\(user.name )'s channel"
-        }
-        MessageService.instance.findAllChannels { (success) in
-            self.placeHolderData.removeAll()
-            for channel in MessageService.instance.channels {
-                self.placeHolderData.append(channel)
-            }
-            self.channelsTableView.reloadData()
-        }
+        setNaviationTitle()
+        setChannels()
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepare for segue triggered")
+    }
+    
     
     @IBAction func addChannelTapped(_ sender: UIBarButtonItem) {
         
@@ -89,7 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         func createCell(withIndentifier: String, imageName: String?, title: String, color: UIColor?) -> UITableViewCell {
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "\(withIndentifier)") as? ChannelTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: withIndentifier ) as? ChannelTableViewCell {
                 
                 if imageName != nil {
                     cell.configCell(imageName: imageName!, title: title)
@@ -124,6 +117,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
             return createCell(withIndentifier: "channelCell", imageName: "number", title: placeHolderData[indexPath.row - 2].name , color: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        channelSelected = placeHolderData[indexPath.row - 2]
+        let vc = MessageViewController()
+        vc.navigationItem.title = channelSelected!.name
+    }
+}
+extension HomeViewController {
+    func setNaviationTitle() {
+        if let user = NetworkManager.instance.loggedInUser {
+            navigationItem.title = "\(user.name )'s channel"
+        }
+    }
+    
+    func setChannels() {
+        MessageService.instance.findAllChannels { (success) in
+            self.placeHolderData.removeAll()
+            for channel in MessageService.instance.channels {
+                self.placeHolderData.append(channel)
+            }
+            self.channelsTableView.reloadData()
         }
     }
 }
