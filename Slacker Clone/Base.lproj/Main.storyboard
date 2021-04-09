@@ -100,10 +100,9 @@
                                         <connections>
                                             <outlet property="label" destination="Bwy-HD-qlX" id="Fl6-MG-oT5"/>
                                             <outlet property="thumbnail" destination="J3K-rX-hne" id="Iy7-di-M5w"/>
-                                            <segue destination="dlX-Tg-AcU" kind="show" identifier="ToMessageVC" id="jaL-nM-WUl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dividerCell" rowHeight="59" id="uGh-Rn-gBZ" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dividerCell" rowHeight="59" id="uGh-Rn-gBZ" customClass="ChannelTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="87" width="374" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uGh-Rn-gBZ" id="JIs-ta-hwb">
@@ -164,6 +163,7 @@
                         <outlet property="button" destination="PEh-YR-ldo" id="mZp-H3-Kde"/>
                         <outlet property="channelsTableView" destination="lH6-va-SFI" id="UlG-HD-lTb"/>
                         <outlet property="searchBar" destination="hwx-Eb-Ovv" id="IOb-Tz-MNg"/>
+                        <segue destination="dlX-Tg-AcU" kind="show" identifier="ToMessageVC" id="t16-WF-GiW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjo-w6-7i3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="93" id="INq-Iy-me8" customClass="MessageTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="93" id="INq-Iy-me8" customClass="MessageTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="INq-Iy-me8" id="sWn-XS-NIn">

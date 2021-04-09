@@ -31,7 +31,11 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare for segue triggered")
+        if let destVC = segue.destination as? MessageViewController {
+            if channelSelected != nil {
+                destVC.chosenChannel = channelSelected
+            }
+        }
     }
     
     
@@ -121,11 +125,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard (indexPath.row - 2) >= 0, (indexPath.row - 2) < placeHolderData.count else { return }
+        
         channelSelected = placeHolderData[indexPath.row - 2]
-        let vc = MessageViewController()
-        vc.navigationItem.title = channelSelected!.name
+        performSegue(withIdentifier: "ToMessageVC", sender: nil)
+        
     }
 }
+
 extension HomeViewController {
     func setNaviationTitle() {
         if let user = NetworkManager.instance.loggedInUser {

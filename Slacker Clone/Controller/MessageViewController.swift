@@ -21,12 +21,10 @@ class MessageViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         messageTextField.delegate = self
-        navigationController?.delegate = self
-        if chosenChannel != nil {
-            print(chosenChannel!.name)
-            navigationItem.title = chosenChannel!.name
-        }
+        setNavigationTitle()
+       
     }
+    
     
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -61,5 +59,15 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    
+}
+
+extension MessageViewController {
+    
+    func setNavigationTitle() {
+        if let title = chosenChannel?.name {
+            navigationItem.title = title
+        }
+    }
     
 }
