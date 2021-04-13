@@ -13,10 +13,10 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     
-    func configCell(message: String, user: User) {
-        messageLabel.text = message
+    func configCell(for message: Message) {
+        messageLabel.text = message.body
         avatarImage.image = UIImage(systemName: "person")
-        nameLabel.text = user.name
+        nameLabel.text = message.userName
     }
 
 }

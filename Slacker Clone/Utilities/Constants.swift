@@ -25,4 +25,5 @@ enum URLEndpoint: String {
     case byUserEmail   = "/v1//user/byEmail/"
     case addChannel    = "/v1/channel/add"
     case getChannels   = "/v1/channel"
+    case getAllMessages = "/v1/message/byChannel/"
 }
