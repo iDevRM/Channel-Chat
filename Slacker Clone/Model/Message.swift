@@ -11,4 +11,5 @@ struct Message {
     let channelId: String
     let userName: String
     let body: String
+    let time: String
 }

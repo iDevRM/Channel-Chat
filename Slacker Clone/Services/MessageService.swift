@@ -61,7 +61,7 @@ class MessageService {
                 do {
                     if let json = try JSON(data: data).array {
                         for message in json {
-                            let message = Message(channelId: message["channelId"].stringValue, userName: message["userName"].stringValue, body: message["messageBody"].stringValue)
+                            let message = Message(channelId: message["channelId"].stringValue, userName: message["userName"].stringValue, body: message["messageBody"].stringValue, time: message["timeStamp"].stringValue)
                             arrayOfMessages.append(message)
                         }
                     }
