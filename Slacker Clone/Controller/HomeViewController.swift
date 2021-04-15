@@ -24,6 +24,11 @@ class HomeViewController: UIViewController {
         button.layer.cornerRadius    = 25
         setNaviationTitle()
         setChannels()
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.channelsTableView.reloadData()
+            }
+        }
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

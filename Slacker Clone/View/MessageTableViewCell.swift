@@ -19,17 +19,17 @@ class MessageTableViewCell: UITableViewCell {
         avatarImage.image = UIImage(named: "profileDefault")
         nameLabel.text = message.userName
         
-        var isoDate = message.time
-        let end = isoDate.index(isoDate.endIndex, offsetBy: -5)
-        let substring = isoDate.removeSubrange(end as RangeExpression)
+        let isoDate = message.time
+        let end = isoDate.firstIndex(of: ".")
+        let substring = isoDate[..<end!]
         
         let isoFormatter = ISO8601DateFormatter()
-        let chatDate = isoFormatter.date(from: substring.appending("Z"))
+        let messageDate = isoFormatter.date(from: substring.appending("Z"))
         
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "MMM d, h:mm a"
         
-        if let finalDate = chatDate {
+        if let finalDate = messageDate {
             let finalDate = newFormatter.string(from: finalDate)
             timeLabel.text = finalDate
         }
