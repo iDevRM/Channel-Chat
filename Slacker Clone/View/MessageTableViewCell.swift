@@ -18,7 +18,11 @@ class MessageTableViewCell: UITableViewCell {
         messageLabel.text = message.body
         avatarImage.image = UIImage(named: "profileDefault")
         nameLabel.text = message.userName
-        
+        formatMessageTime(message)
+    
+    }
+    
+    func formatMessageTime(_ message: Message) {
         let isoDate = message.time
         let end = isoDate.firstIndex(of: ".")
         let substring = isoDate[..<end!]
@@ -33,7 +37,6 @@ class MessageTableViewCell: UITableViewCell {
             let finalDate = newFormatter.string(from: finalDate)
             timeLabel.text = finalDate
         }
-        
     }
 
 }

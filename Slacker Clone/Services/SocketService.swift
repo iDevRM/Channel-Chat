@@ -75,5 +75,19 @@ class SocketService: NSObject {
         }
     }
     
+    func getNewMessage(_ completionHandler: @escaping (_ newMessage: Message) -> Void ) {
+        socket.on("messageCreated") { (dataArray, sockerAck) in
+            guard let newBody = dataArray[0] as? String,
+                  let newChannelId = dataArray[2] as? String,
+                  let newName = dataArray[3] as? String,
+                  let newTime = dataArray[7] as? String else { return }
+            
+            let newMessage = Message(channelId: newChannelId, userName: newName, body: newBody, time: newTime)
+            
+            completionHandler(newMessage)
+            
+        }
+    }
+    
     
 }

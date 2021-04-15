@@ -24,6 +24,12 @@ class MessageViewController: UIViewController {
         messageTextField.delegate = self
         setNavigationTitle()
         setMessages()
+        SocketService.instance.getNewMessage { (newMessage) in
+            if newMessage.channelId == self.chosenChannel?.id {
+                self.setMessages()
+              
+            }
+        }
     }
     
     
@@ -78,6 +84,8 @@ extension MessageViewController {
                 if success {
                     self.messagesForChannel = messages
                     self.tableView.reloadData()
+                    let indexPath = IndexPath(row: self.messagesForChannel.count - 1, section: 0)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 }
             }
         }
