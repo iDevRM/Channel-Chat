@@ -23,6 +23,7 @@ class MessageService {
                 
                 do {
                     if let json = try JSON(data: data).array {
+                        self.channels.removeAll()
                         for item in json {
                             let name = item["name"].stringValue
                             let description = item["description"].stringValue

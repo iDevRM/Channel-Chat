@@ -51,6 +51,11 @@ class MessageViewController: UIViewController {
 }
 
 extension MessageViewController: UITextFieldDelegate, UINavigationControllerDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendButtonTapped(UIButton())
+        messageTextField.resignFirstResponder()
+        return true
+    }
     
 }
 
@@ -84,8 +89,10 @@ extension MessageViewController {
                 if success {
                     self.messagesForChannel = messages
                     self.tableView.reloadData()
-                    let indexPath = IndexPath(row: self.messagesForChannel.count - 1, section: 0)
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    if self.messagesForChannel.count > 0 {
+                        let indexPath = IndexPath(row: self.messagesForChannel.count - 1, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
                 }
             }
         }

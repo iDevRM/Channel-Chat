@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         setChannels()
         SocketService.instance.getChannel { (success) in
             if success {
-                self.channelsTableView.reloadData()
+                self.setChannels()
             }
         }
     }
@@ -125,7 +125,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case placeHolderData.count + 5:
             return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
-            return createCell(withIndentifier: "channelCell", imageName: "number", title: placeHolderData[indexPath.row - 2].name , color: nil)
+            return createCell(withIndentifier: "channelCell", imageName: "number", title: placeHolderData[indexPath.row - 2].name , color: UIColor.gray)
         }
     }
     
