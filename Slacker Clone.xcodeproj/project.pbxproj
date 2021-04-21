@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,9 +17,6 @@
 		1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* HomeViewController.swift */; };
 		1D59A70725F94CBB00433C22 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70625F94CBB00433C22 /* Channel.swift */; };
 		1D5E194026091BF300FD3796 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E193F26091BF300FD3796 /* SocketService.swift */; };
-		1D607B77262DE4DF008B19D9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1D607B76262DE4DF008B19D9 /* SwiftyJSON */; };
-		1D607B7A262DE507008B19D9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1D607B79262DE507008B19D9 /* Alamofire */; };
-		1D607B7D262DE52E008B19D9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 1D607B7C262DE52E008B19D9 /* SocketIO */; };
 		1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */; };
 		1D8862782600065800A7BC46 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8862772600065800A7BC46 /* RegisterViewController.swift */; };
 		1D88627B2600099A00A7BC46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88627A2600099A00A7BC46 /* User.swift */; };
@@ -30,6 +27,8 @@
 		1DCA2A2C2625F19E005E27D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA2A2B2625F19E005E27D6 /* Message.swift */; };
 		1DEE2BE5261B761800C08C11 /* AvatarImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */; };
 		1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */; };
+		54DEFB2B1F21848463643E2A /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */; };
+		D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C4C1FCD80C1A3557C636568 /* Pods-Slacker Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.release.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.release.xcconfig"; sourceTree = "<group>"; };
+		05AC325B10AC784FCDDFE6D2 /* Pods-Slacker Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.release.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.release.xcconfig"; sourceTree = "<group>"; };
 		1D19512F25FAC53E0065DC4C /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		1D20D244261E295E00BF901E /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		1D59A6E625F92BA600433C22 /* Slacker Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slacker Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +68,9 @@
 		1DCA2A2B2625F19E005E27D6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageViewController.swift; sourceTree = "<group>"; };
 		1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
-		7308D98A0F9CB169A90A0967 /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacker_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Slacker_Clone.framework; path = "/Users/rick/Library/Developer/Xcode/DerivedData/Slacker_Clone-bptnfhomugxjeodddwexogesdogl/Build/Products/Debug-iphoneos/Pods_Slacker_Clone.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D607B77262DE4DF008B19D9 /* SwiftyJSON in Frameworks */,
-				1D607B7A262DE507008B19D9 /* Alamofire in Frameworks */,
-				1D607B7D262DE52E008B19D9 /* SocketIO in Frameworks */,
+				D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */,
+				54DEFB2B1F21848463643E2A /* Pods_Slacker_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,8 @@
 			children = (
 				1D59A6E825F92BA600433C22 /* Slacker Clone */,
 				1D59A6E725F92BA600433C22 /* Products */,
-				23E392561B5D0B3FA0233541 /* Pods */,
+				9BE8739FDBF70924F4E4F97F /* Pods */,
+				8B896A1439A0D4A173CD3A9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,11 +172,20 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		23E392561B5D0B3FA0233541 /* Pods */ = {
+		8B896A1439A0D4A173CD3A9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7308D98A0F9CB169A90A0967 /* Pods-Slacker Clone.debug.xcconfig */,
-				1C4C1FCD80C1A3557C636568 /* Pods-Slacker Clone.release.xcconfig */,
+				A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */,
+				223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BE8739FDBF70924F4E4F97F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */,
+				05AC325B10AC784FCDDFE6D2 /* Pods-Slacker Clone.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -192,17 +202,13 @@
 				1D59A6E325F92BA600433C22 /* Frameworks */,
 				1D59A6E425F92BA600433C22 /* Resources */,
 				1D607B68262DE2AE008B19D9 /* Embed Frameworks */,
+				1068B88DA6DBE72FABCCD0F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Slacker Clone";
-			packageProductDependencies = (
-				1D607B76262DE4DF008B19D9 /* SwiftyJSON */,
-				1D607B79262DE507008B19D9 /* Alamofire */,
-				1D607B7C262DE52E008B19D9 /* SocketIO */,
-			);
 			productName = "Slacker Clone";
 			productReference = 1D59A6E625F92BA600433C22 /* Slacker Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -230,11 +236,6 @@
 				Base,
 			);
 			mainGroup = 1D59A6DD25F92BA600433C22;
-			packageReferences = (
-				1D607B75262DE4DF008B19D9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				1D607B78262DE507008B19D9 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				1D607B7B262DE52E008B19D9 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
-			);
 			productRefGroup = 1D59A6E725F92BA600433C22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +259,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1068B88DA6DBE72FABCCD0F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BDF6000D2A759E2EF82D2893 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,7 +461,7 @@
 		};
 		1D59A6FB25F92BA700433C22 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7308D98A0F9CB169A90A0967 /* Pods-Slacker Clone.debug.xcconfig */;
+			baseConfigurationReference = 9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -463,7 +481,7 @@
 		};
 		1D59A6FC25F92BA700433C22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C4C1FCD80C1A3557C636568 /* Pods-Slacker Clone.release.xcconfig */;
+			baseConfigurationReference = 05AC325B10AC784FCDDFE6D2 /* Pods-Slacker Clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -503,51 +521,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1D607B75262DE4DF008B19D9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-		1D607B78262DE507008B19D9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.2;
-			};
-		};
-		1D607B7B262DE52E008B19D9 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 16.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1D607B76262DE4DF008B19D9 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1D607B75262DE4DF008B19D9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
-		1D607B79262DE507008B19D9 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1D607B78262DE507008B19D9 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		1D607B7C262DE52E008B19D9 /* SocketIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1D607B7B262DE52E008B19D9 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
-			productName = SocketIO;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1D59A6DE25F92BA600433C22 /* Project object */;
 }
