@@ -17,6 +17,21 @@ class ChannelTableViewCell: UITableViewCell {
         if imageName != nil {
             thumbnail.image = UIImage(systemName: "\(imageName!)")
         }
+        
+    }
+    
+    func configActiveCell(channel: Channel) {
+        label.text = channel.name
+        thumbnail.image = UIImage(systemName: "number")
+        thumbnail.tintColor = UIColor.gray
+        
+        if let unreadChannel = channel.hasNewMessage {
+            if unreadChannel {
+                label.font = UIFont(name: "AvenirNext-Bold", size: 14)
+            } else {
+                label.font = UIFont(name: "AvenirNext-Medium", size: 14)
+            }
+        }
     }
 
 }

@@ -31,7 +31,7 @@
         <!--Channels-->
         <scene sceneID="aym-oh-b5R">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="pIF-hw-h1h" customClass="HomeViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="pIF-hw-h1h" customClass="ChannelsViewController" customModule="Slacker_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIx-4D-xfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

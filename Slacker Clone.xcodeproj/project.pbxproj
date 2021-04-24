@@ -14,7 +14,7 @@
 		1D59A6F125F92BA600433C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6EF25F92BA600433C22 /* Main.storyboard */; };
 		1D59A6F325F92BA700433C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F225F92BA700433C22 /* Assets.xcassets */; };
 		1D59A6F625F92BA700433C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D59A6F425F92BA700433C22 /* LaunchScreen.storyboard */; };
-		1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* HomeViewController.swift */; };
+		1D59A70425F93E0100433C22 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70325F93E0100433C22 /* ChannelsViewController.swift */; };
 		1D59A70725F94CBB00433C22 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D59A70625F94CBB00433C22 /* Channel.swift */; };
 		1D5E194026091BF300FD3796 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E193F26091BF300FD3796 /* SocketService.swift */; };
 		1D6D1CD325FBDD1800298C60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */; };
@@ -27,7 +27,6 @@
 		1DCA2A2C2625F19E005E27D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA2A2B2625F19E005E27D6 /* Message.swift */; };
 		1DEE2BE5261B761800C08C11 /* AvatarImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */; };
 		1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */; };
-		54DEFB2B1F21848463643E2A /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */; };
 		D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,7 @@
 		1D59A6F225F92BA700433C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D59A6F525F92BA700433C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D59A6F725F92BA700433C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D59A70325F93E0100433C22 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1D59A70325F93E0100433C22 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		1D59A70625F94CBB00433C22 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		1D5E193F26091BF300FD3796 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		1DCA2A2B2625F19E005E27D6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageViewController.swift; sourceTree = "<group>"; };
 		1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
-		223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacker_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Slacker_Clone.framework; path = "/Users/rick/Library/Developer/Xcode/DerivedData/Slacker_Clone-bptnfhomugxjeodddwexogesdogl/Build/Products/Debug-iphoneos/Pods_Slacker_Clone.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -79,7 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */,
-				54DEFB2B1F21848463643E2A /* Pods_Slacker_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +122,7 @@
 		1D59A6FF25F93C3400433C22 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1D59A70325F93E0100433C22 /* HomeViewController.swift */,
+				1D59A70325F93E0100433C22 /* ChannelsViewController.swift */,
 				1D6D1CD225FBDD1800298C60 /* LogInViewController.swift */,
 				1D8862772600065800A7BC46 /* RegisterViewController.swift */,
 				1DC385BF260A6BA60091449C /* MessageViewController.swift */,
@@ -176,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */,
-				223DB57F9F3A6AAE5270C71E /* Pods_Slacker_Clone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,7 +311,7 @@
 				1D88627B2600099A00A7BC46 /* User.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
 				1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */,
-				1D59A70425F93E0100433C22 /* HomeViewController.swift in Sources */,
+				1D59A70425F93E0100433C22 /* ChannelsViewController.swift in Sources */,
 				1DC385C0260A6BA60091449C /* MessageViewController.swift in Sources */,
 				1D19513025FAC53E0065DC4C /* ChannelTableViewCell.swift in Sources */,
 			);

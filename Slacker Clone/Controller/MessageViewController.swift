@@ -19,18 +19,14 @@ class MessageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate        = self
+        tableView.dataSource      = self
         messageTextField.delegate = self
         setNavigationTitle()
         setMessages()
-        SocketService.instance.getNewMessage { (newMessage) in
-            if newMessage.channelId == self.chosenChannel?.id {
-                self.setMessages()
-              
-            }
-        }
+        listenForNewMessages()
     }
+    
     
     
     
@@ -94,6 +90,15 @@ extension MessageViewController {
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                 }
+            }
+        }
+    }
+    
+    func listenForNewMessages() {
+        SocketService.instance.getNewMessage { (newMessage) in
+            if newMessage.channelId == self.chosenChannel?.id {
+                self.setMessages()
+              
             }
         }
     }

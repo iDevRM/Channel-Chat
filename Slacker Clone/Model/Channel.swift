@@ -11,4 +11,5 @@ struct Channel {
     var name: String
     var desciption: String?
     var id: String?
+    var hasNewMessage: Bool?
 }

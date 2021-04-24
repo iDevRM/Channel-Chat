@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class ChannelsViewController: UIViewController {
     
     @IBOutlet weak var searchBar:           UISearchBar!
     @IBOutlet weak var channelsTableView:   UITableView!
@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var addChannelBarButton: UIBarButtonItem!
     
     var channelSelected: Channel?
-    var placeHolderData = [Channel(name: "apple-events"),Channel(name: "beginner-questions"),Channel(name: "career-advice"),Channel(name: "course-github-followers"),Channel(name: "general"),Channel(name: "resources")]
+    var placeHolderChannels = [Channel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +24,14 @@ class HomeViewController: UIViewController {
         button.layer.cornerRadius    = 25
         setNaviationTitle()
         setChannels()
-        SocketService.instance.getChannel { (success) in
-            if success {
-                self.setChannels()
-            }
+        listenForNewChannels()
+        SocketService.instance.getNewMessage { (newMessage) in
+            let index = self.placeHolderChannels.firstIndex { $0.id == newMessage.channelId }!
+            self.placeHolderChannels[index].hasNewMessage = true
+            self.channelsTableView.reloadData()
         }
     }
+    
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         
@@ -82,14 +84,14 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placeHolderData.count + 6
+        return placeHolderChannels.count + 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        func createCell(withIndentifier: String, imageName: String?, title: String, color: UIColor?) -> UITableViewCell {
+        func createInactiveCell(withIndentifier: String, imageName: String?, title: String, color: UIColor?) -> UITableViewCell {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: withIndentifier ) as? ChannelTableViewCell {
                 
@@ -102,9 +104,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 if color != nil {
                     cell.thumbnail.tintColor = color
                 }
-                
                 return cell
-                
+            }
+            return UITableViewCell()
+        }
+        
+        
+        func createActiveCell(channel: Channel) -> UITableViewCell {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelTableViewCell {
+                cell.configActiveCell(channel: channel)
+                return cell
             }
             
             return UITableViewCell()
@@ -113,32 +123,34 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            return createCell(withIndentifier: "channelCell", imageName: "square.stack.3d.down.right", title: "Threads", color: nil)
+            return createInactiveCell(withIndentifier: "channelCell", imageName: "square.stack.3d.down.right", title: "Threads", color: nil)
         case 1:
-            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Channels", color: nil)
-        case placeHolderData.count + 2:
-            return createCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
-        case placeHolderData.count + 3:
-            return createCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
-        case placeHolderData.count + 4:
-            return createCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
-        case placeHolderData.count + 5:
-            return createCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
+            return createInactiveCell(withIndentifier: "dividerCell", imageName: nil, title: "Channels", color: nil)
+        case placeHolderChannels.count + 2:
+            return createInactiveCell(withIndentifier: "dividerCell", imageName: nil, title: "Direct Messages", color: nil)
+        case placeHolderChannels.count + 3:
+            return createInactiveCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+        case placeHolderChannels.count + 4:
+            return createInactiveCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+        case placeHolderChannels.count + 5:
+            return createInactiveCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
-            return createCell(withIndentifier: "channelCell", imageName: "number", title: placeHolderData[indexPath.row - 2].name , color: UIColor.gray)
+            return createActiveCell(channel: placeHolderChannels[indexPath.row - 2])
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard (indexPath.row - 2) >= 0, (indexPath.row - 2) < placeHolderData.count else { return }
+        guard (indexPath.row - 2) >= 0, (indexPath.row - 2) < placeHolderChannels.count else { return }
         
-        channelSelected = placeHolderData[indexPath.row - 2]
+        channelSelected = placeHolderChannels[indexPath.row - 2]
+        placeHolderChannels[indexPath.row - 2].hasNewMessage = false
         performSegue(withIdentifier: "ToMessageVC", sender: nil)
+        channelsTableView.reloadData()
         
     }
 }
 
-extension HomeViewController {
+extension ChannelsViewController {
     func setNaviationTitle() {
         if let user = NetworkManager.instance.loggedInUser {
             navigationItem.title = "\(user.name )'s channel"
@@ -147,11 +159,19 @@ extension HomeViewController {
     
     func setChannels() {
         MessageService.instance.findAllChannels { (success) in
-            self.placeHolderData.removeAll()
+            self.placeHolderChannels.removeAll()
             for channel in MessageService.instance.channels {
-                self.placeHolderData.append(channel)
+                self.placeHolderChannels.append(channel)
             }
             self.channelsTableView.reloadData()
+        }
+    }
+    
+    func listenForNewChannels() {
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.setChannels()
+            }
         }
     }
 }
