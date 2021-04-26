@@ -179,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1hd-FQ-QkZ">
-                                <rect key="frame" x="0.0" y="56" width="414" height="573"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="65" id="INq-Iy-me8" customClass="MessageTableViewCell" customModule="Slacker_Clone" customModuleProvider="target">
@@ -250,7 +250,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQW-rF-hHs">
-                                <rect key="frame" x="369" y="634" width="40" height="28"/>
+                                <rect key="frame" x="369" y="640" width="40" height="22"/>
                                 <color key="tintColor" red="0.1529411765" green="0.035294117649999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Button" image="arrow.right" catalog="system">
@@ -260,21 +260,29 @@
                                     <action selector="sendButtonTapped:" destination="dlX-Tg-AcU" eventType="touchUpInside" id="oYV-QB-CbC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLu-Mn-6QG">
+                                <rect key="frame" x="5" y="635" width="404" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="shB-lh-EEX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zkZ-qR-FiF" firstAttribute="leading" secondItem="shB-lh-EEX" secondAttribute="leading" constant="5" id="2ji-3b-OX4"/>
                             <constraint firstItem="shB-lh-EEX" firstAttribute="trailing" secondItem="XQW-rF-hHs" secondAttribute="trailing" constant="5" id="Lqz-HH-rrn"/>
+                            <constraint firstItem="BLu-Mn-6QG" firstAttribute="leading" secondItem="shB-lh-EEX" secondAttribute="leading" constant="5" id="NAT-gF-ItN"/>
                             <constraint firstItem="shB-lh-EEX" firstAttribute="bottom" secondItem="zkZ-qR-FiF" secondAttribute="bottom" constant="5" id="Pcp-pF-QUk"/>
                             <constraint firstItem="1hd-FQ-QkZ" firstAttribute="leading" secondItem="shB-lh-EEX" secondAttribute="leading" id="UwK-tM-yfb"/>
-                            <constraint firstItem="zkZ-qR-FiF" firstAttribute="top" secondItem="1hd-FQ-QkZ" secondAttribute="bottom" constant="8" symbolic="YES" id="XTp-GE-Z08"/>
                             <constraint firstItem="XQW-rF-hHs" firstAttribute="leading" secondItem="zkZ-qR-FiF" secondAttribute="trailing" constant="5" id="Y4Y-92-0VT"/>
+                            <constraint firstItem="shB-lh-EEX" firstAttribute="trailing" secondItem="BLu-Mn-6QG" secondAttribute="trailing" constant="5" id="aAU-Kv-Tea"/>
                             <constraint firstItem="shB-lh-EEX" firstAttribute="trailing" secondItem="zkZ-qR-FiF" secondAttribute="trailing" constant="50" id="aRd-k8-PLl"/>
                             <constraint firstItem="shB-lh-EEX" firstAttribute="bottom" secondItem="XQW-rF-hHs" secondAttribute="bottom" constant="5" id="arM-e6-kEF"/>
+                            <constraint firstItem="XQW-rF-hHs" firstAttribute="top" secondItem="BLu-Mn-6QG" secondAttribute="bottom" constant="5" id="mIp-P7-b97"/>
                             <constraint firstItem="1hd-FQ-QkZ" firstAttribute="top" secondItem="shB-lh-EEX" secondAttribute="top" id="mUY-KH-4ig"/>
                             <constraint firstItem="1hd-FQ-QkZ" firstAttribute="trailing" secondItem="shB-lh-EEX" secondAttribute="trailing" id="msH-aO-kop"/>
-                            <constraint firstItem="XQW-rF-hHs" firstAttribute="top" secondItem="1hd-FQ-QkZ" secondAttribute="bottom" constant="5" id="wc0-Ss-poU"/>
+                            <constraint firstItem="1hd-FQ-QkZ" firstAttribute="bottom" secondItem="BLu-Mn-6QG" secondAttribute="top" constant="-5" id="wc0-Ss-poU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Izc-jl-AOI"/>
@@ -282,6 +290,7 @@
                         <outlet property="messageTextField" destination="zkZ-qR-FiF" id="6Is-1x-Tlk"/>
                         <outlet property="sendButton" destination="XQW-rF-hHs" id="k5T-Sv-0LI"/>
                         <outlet property="tableView" destination="1hd-FQ-QkZ" id="96p-1r-AJM"/>
+                        <outlet property="typingUsersLabel" destination="BLu-Mn-6QG" id="wxy-8U-WvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKv-Es-b1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

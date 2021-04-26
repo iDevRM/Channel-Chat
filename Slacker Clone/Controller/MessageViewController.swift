@@ -12,10 +12,12 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var typingUsersLabel: UILabel!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
     var chosenChannel: Channel?
     var messagesForChannel: [Message] = []
+    var isTyping = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class MessageViewController: UIViewController {
         setNavigationTitle()
         setMessages()
         listenForNewMessages()
+        listenForTypingUsers()
     }
     
     
@@ -40,6 +43,9 @@ class MessageViewController: UIViewController {
                 if success {
                     self.messageTextField.text = ""
                     self.setMessages()
+                    if let userName = self.loggedInUser?.name {
+                        socket.emit("stopType", userName)
+                    }
                 }
             }
         }
@@ -51,6 +57,22 @@ extension MessageViewController: UITextFieldDelegate, UINavigationControllerDele
         sendButtonTapped(UIButton())
         messageTextField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let channelId = chosenChannel?.id,
+              let userName = loggedInUser?.name else { return }
+        
+        if !textField.hasText {
+            isTyping = false
+            socket.emit("stopType", userName)
+        } else {
+            if !isTyping {
+                socket.emit("startType", userName, channelId)
+            }
+            isTyping = true
+        }
+        
     }
     
 }
@@ -100,6 +122,38 @@ extension MessageViewController {
                 self.setMessages()
               
             }
+        }
+    }
+    
+    func listenForTypingUsers() {
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            print(typingUsers)
+            guard let channelId = self.chosenChannel?.id,
+                  let userName = self.loggedInUser?.name else { return }
+            var names = ""
+            var numberOfTypers = 0
+            
+            for (typingUser, channel) in typingUsers {
+                if typingUser != userName && channel != channelId {
+                    if names.isEmpty {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            
+            if numberOfTypers > 0 && NetworkManager.instance.isLoggedIn {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLabel.text = "\(names) \(verb) typing a message..."
+            } else {
+                self.typingUsersLabel.text = ""
+            }
+            
         }
     }
     
