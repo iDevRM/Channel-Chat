@@ -8,8 +8,12 @@
 import UIKit
 
 struct Message {
-    let channelId: String
-    let userName: String
+    let messageId: String
     let body: String
     let time: String
+    let channelId: String
+    let userName: String
+    let userId: String
+    let userAvatarName: String
+    let userAvatarColor: String
 }

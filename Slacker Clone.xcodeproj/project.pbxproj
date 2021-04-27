@@ -25,6 +25,7 @@
 		1DC385C0260A6BA60091449C /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC385BF260A6BA60091449C /* MessageViewController.swift */; };
 		1DC385C3260A85480091449C /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC385C2260A85480091449C /* MessageTableViewCell.swift */; };
 		1DCA2A2C2625F19E005E27D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA2A2B2625F19E005E27D6 /* Message.swift */; };
+		1DE331D7263899D0001C225D /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE331D6263899D0001C225D /* UserDataService.swift */; };
 		1DEE2BE5261B761800C08C11 /* AvatarImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */; };
 		1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */; };
 		D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */; };
@@ -65,6 +66,7 @@
 		1DC385BF260A6BA60091449C /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1DC385C2260A85480091449C /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		1DCA2A2B2625F19E005E27D6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1DE331D6263899D0001C225D /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageViewController.swift; sourceTree = "<group>"; };
 		1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
 		9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				1D88627D2600102700A7BC46 /* NetworkManager.swift */,
 				1D5E193F26091BF300FD3796 /* SocketService.swift */,
 				1D20D244261E295E00BF901E /* MessageService.swift */,
+				1DE331D6263899D0001C225D /* UserDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				1D89CE6F260114FA00B7B478 /* Constants.swift in Sources */,
 				1DC385C3260A85480091449C /* MessageTableViewCell.swift in Sources */,
 				1D88627B2600099A00A7BC46 /* User.swift in Sources */,
+				1DE331D7263899D0001C225D /* UserDataService.swift in Sources */,
 				1D59A6EC25F92BA600433C22 /* SceneDelegate.swift in Sources */,
 				1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */,
 				1D59A70425F93E0100433C22 /* ChannelsViewController.swift in Sources */,

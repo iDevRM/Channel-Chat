@@ -20,8 +20,9 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     let colorPicker = UIColorPickerViewController()
     
     
-    let defaultPicture = "profileDefault"
-    let defaultColor = "[0.5, 0.5, 0.5, 1]"
+    
+    var avatarPicture = UserDataService.instance.avatarName
+    var avatarColor   = "[0.5, 0.5, 0.5, 1]"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,12 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
         colorPicker.supportsAlpha = true
         colorPicker.selectedColor = UIColor.systemTeal
         colorPicker.delegate = self
+        navigationController?.delegate = self
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        loadView()
     }
    
     
@@ -39,7 +46,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     var newAvatar: UIImage {
         get {
             
-            return UIImage(named: NetworkManager.instance.loggedInUser?.avatarName ?? defaultPicture)!
+            return UIImage(named: UserDataService.instance.avatarName )!
             
         }
         set {
@@ -61,7 +68,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
                 NetworkManager.instance.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (success) in
                     
                     if success {
-                        NetworkManager.instance.createUser(name: self.nameTextField.text!, email: self.emailTextField.text!, avatarColor: "", avatarName: "") { (success) in
+                        NetworkManager.instance.createUser(name: self.nameTextField.text!, email: self.emailTextField.text!, avatarColor: "", avatarName: UserDataService.instance.avatarName) { (success) in
                             
                             if success {
                                 let alert = UIAlertController(title: "You have successfully registered a new user", message: "You can now log in", preferredStyle: .alert)
@@ -79,6 +86,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "AvatarImageSegue", sender: nil)
+        
     }
     
     @IBAction func chooseColorTapped(_ sender: UIButton) {
@@ -88,7 +96,13 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        chooseColorButton.backgroundColor = colorPicker.selectedColor
+      
+        if let chosenColor = colorPicker.selectedColor.cgColor.components?.description {
+            avatarColor = chosenColor
+            chooseColorButton.backgroundColor = colorPicker.selectedColor
+        }
+        
+        
     }
     
     
@@ -102,4 +116,10 @@ extension RegisterViewController: UITextFieldDelegate {
             return false
         }
     }
+}
+
+
+extension RegisterViewController {
+   
+    
 }

@@ -7,10 +7,12 @@
 
 import UIKit
 
-class AvatarImageViewController: UIViewController {
+class AvatarImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    var chosenPicture = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,19 +52,19 @@ extension AvatarImageViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if segmentControl.selectedSegmentIndex == 0 {
-            
-            NetworkManager.instance.loggedInUser?.avatarName = "light\(indexPath.row)"
+            print("light\(indexPath.row)")
+            UserDataService.instance.avatarName = "light\(indexPath.row)"
             
         } else {
-            
-            NetworkManager.instance.loggedInUser?.avatarName = "dark\(indexPath.row)"
+            print("dark\(indexPath.row)")
+            UserDataService.instance.avatarName = "dark\(indexPath.row)"
         }
+       
         
         dismiss(animated: true, completion: nil)
         
     }
     
-   
     
 }
 

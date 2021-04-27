@@ -16,7 +16,7 @@ class MessageTableViewCell: UITableViewCell {
     
     func configCell(for message: Message) {
         messageLabel.text = message.body
-        avatarImage.image = UIImage(named: "profileDefault")
+        avatarImage.image = UIImage(named: "\(NetworkManager.instance.loggedInUser!.avatarName)")
         nameLabel.text = message.userName
         formatMessageTime(message)
     
