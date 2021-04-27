@@ -127,14 +127,15 @@ extension MessageViewController {
     
     func listenForTypingUsers() {
         SocketService.instance.getTypingUsers { (typingUsers) in
-            print(typingUsers)
+            
             guard let channelId = self.chosenChannel?.id,
                   let userName = self.loggedInUser?.name else { return }
+            
             var names = ""
             var numberOfTypers = 0
             
             for (typingUser, channel) in typingUsers {
-                if typingUser != userName && channel != channelId {
+                if typingUser != userName && channel == channelId {
                     if names.isEmpty {
                         names = typingUser
                     } else {
@@ -144,7 +145,7 @@ extension MessageViewController {
                 }
             }
             
-            if numberOfTypers > 0 && NetworkManager.instance.isLoggedIn {
+            if numberOfTypers > 0 {
                 var verb = "is"
                 if numberOfTypers > 1 {
                     verb = "are"
