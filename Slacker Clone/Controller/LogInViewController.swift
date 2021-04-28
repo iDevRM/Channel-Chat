@@ -9,11 +9,13 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    @IBOutlet weak var icon: UIImageView!
+ 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var textFieldBackgroundView: UIView!
+    
     
     let icon1 = UIImage(systemName: "person.crop.circle.badge.questionmark")
     let icon2 = UIImage(systemName: "person.crop.circle.badge.checkmark")
@@ -24,6 +26,14 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate    = self
         passwordTextField.delegate = self
+        logInButton.layer.cornerRadius = 10
+        textFieldBackgroundView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        textFieldBackgroundView.layer.shadowOpacity = 0.50
+        textFieldBackgroundView.layer.shadowRadius = 8
+        textFieldBackgroundView.layer.cornerRadius = 10
+        logInButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        logInButton.layer.shadowOpacity = 0.30
+        logInButton.layer.shadowRadius = 5
     }
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {

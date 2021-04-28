@@ -16,6 +16,7 @@ class ChannelsViewController: UIViewController {
     
     var channelSelected: Channel?
     var placeHolderChannels = [Channel]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +26,7 @@ class ChannelsViewController: UIViewController {
         setNaviationTitle()
         setChannels()
         listenForNewChannels()
-        SocketService.instance.getNewMessage { (newMessage) in
-            let index = self.placeHolderChannels.firstIndex { $0.id == newMessage.channelId }!
-            self.placeHolderChannels[index].hasNewMessage = true
-            self.channelsTableView.reloadData()
-        }
-    }
-    
-    
-    @IBAction func buttonTapped(_ sender: UIButton) {
-        
+        listenForNewMessages()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -131,7 +123,7 @@ extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
         case placeHolderChannels.count + 3:
             return createInactiveCell(withIndentifier: "channelCell", imageName: "heart.fill", title: "Slackbot", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
         case placeHolderChannels.count + 4:
-            return createInactiveCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "Rick Martinez", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
+            return createInactiveCell(withIndentifier: "channelCell", imageName: "circle.fill", title: "\(NetworkManager.instance.loggedInUser!.name)", color: #colorLiteral(red: 0.4048334956, green: 0.745326519, blue: 0.2040545642, alpha: 1))
         case placeHolderChannels.count + 5:
             return createInactiveCell(withIndentifier: "channelCell", imageName: "plus", title: "Add teammates", color: nil)
         default:
@@ -172,6 +164,14 @@ extension ChannelsViewController {
             if success {
                 self.setChannels()
             }
+        }
+    }
+    
+    func listenForNewMessages() {
+        SocketService.instance.getNewMessage { (newMessage) in
+            let index = self.placeHolderChannels.firstIndex { $0.id == newMessage.channelId }!
+            self.placeHolderChannels[index].hasNewMessage = true
+            self.channelsTableView.reloadData()
         }
     }
 }
