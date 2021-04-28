@@ -15,9 +15,11 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel:    UILabel!
     
     func configCell(for message: Message) {
-        messageLabel.text = message.body
-        avatarImage.image = UIImage(named: message.userAvatarName)
-        nameLabel.text    = message.userName
+        messageLabel.text              = message.body
+        avatarImage.image              = UIImage(named: message.userAvatarName)
+        avatarImage.backgroundColor    = UserDataService.instance.returnUIColor(components: message.userAvatarColor)
+        avatarImage.layer.cornerRadius = 10
+        nameLabel.text                 = message.userName
         formatMessageTime(message)
     }
     

@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     
     
     var avatarPicture = UserDataService.instance.avatarName
-    var avatarColor   = "[0.5, 0.5, 0.5, 1]"
+    var avatarColor   = UserDataService.instance.avatarColor
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
                 NetworkManager.instance.loginUser(email: self.emailTextField.text!, password: self.passwordTextField.text!) { (success) in
                     
                     if success {
-                        NetworkManager.instance.createUser(name: self.nameTextField.text!, email: self.emailTextField.text!, avatarColor: "", avatarName: UserDataService.instance.avatarName) { (success) in
+                        NetworkManager.instance.createUser(name: self.nameTextField.text!, email: self.emailTextField.text!, avatarColor: self.avatarColor, avatarName: UserDataService.instance.avatarName) { (success) in
                             
                             if success {
                                 let alert = UIAlertController(title: "You have successfully registered a new user", message: "You can now log in", preferredStyle: .alert)
@@ -98,6 +98,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
       
         if let chosenColor = colorPicker.selectedColor.cgColor.components?.description {
+            print(chosenColor)
             avatarColor = chosenColor
             chooseColorButton.backgroundColor = colorPicker.selectedColor
         }
