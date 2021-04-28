@@ -25,8 +25,6 @@ class SocketService: NSObject {
     
     func establishConnection() {
         
-        
-        
         socket.on(clientEvent: .connect) {data, ack in
             print("Socket Connected")
         }
@@ -63,12 +61,12 @@ class SocketService: NSObject {
     
     func getChannel(completion: @escaping (Bool) -> Void) {
         socket.on("channelCreated") { (dataArray, socketAck) in
-            guard let name = dataArray[0] as? String,
-                  let desc = dataArray[1] as? String,
-                  let id = dataArray[2] as? String else { return }
+            guard let channelName        = dataArray[0] as? String,
+                  let channelDescription = dataArray[1] as? String,
+                  let channelId          = dataArray[2] as? String else { return }
            
             
-            let newChannel = Channel(name: name, desciption: desc, id: id)
+            let newChannel = Channel(name: channelName, desciption: channelDescription, id: channelId)
             
             MessageService.instance.channels.append(newChannel)
             completion(true)
@@ -77,12 +75,16 @@ class SocketService: NSObject {
     
     func getNewMessage(_ completionHandler: @escaping (_ newMessage: Message) -> Void ) {
         socket.on("messageCreated") { (dataArray, sockerAck) in
-            guard let newBody = dataArray[0] as? String,
-                  let newChannelId = dataArray[2] as? String,
-                  let newName = dataArray[3] as? String,
-                  let newTime = dataArray[7] as? String else { return }
+            guard let body           = dataArray[0] as? String,
+                  let userId         = dataArray[1] as? String,
+                  let channelId      = dataArray[2] as? String,
+                  let userName       = dataArray[3] as? String,
+                  let avatarName     = dataArray[4] as? String,
+                  let avatarColor    = dataArray[5] as? String,
+                  let messageId      = dataArray[6] as? String,
+                  let timeStamp      = dataArray[7] as? String else { return }
             
-            let newMessage = Message(channelId: newChannelId, userName: newName, body: newBody, time: newTime)
+            let newMessage = Message(messageId: messageId, body: body, time: timeStamp, channelId: channelId, userName: userName, userId: userId, userAvatarName: avatarName, userAvatarColor: avatarColor)
             
             completionHandler(newMessage)
             

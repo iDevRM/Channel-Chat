@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserDataService {
     
@@ -61,5 +62,37 @@ class UserDataService {
             _name = newValue
         }
     }
+    
+    func returnCGColor(components: String) -> CGColor {
+        
+        let scanner = Scanner(string: components)
+        
+        let skipped = CharacterSet(charactersIn: "[], ")
+        let comma   = CharacterSet(charactersIn: ",")
+        
+        scanner.charactersToBeSkipped = skipped
+        
+        var red, green, blue, alpha : String?
+        
+        red   = scanner.scanUpToCharacters(from: comma)
+        green = scanner.scanUpToCharacters(from: comma)
+        blue  = scanner.scanUpToCharacters(from: comma)
+        alpha = scanner.scanUpToCharacters(from: comma)
+        
+        let defaultColor = CGColor(red: 0.69, green: 0.85, blue: 0.99, alpha: 1)
+        
+        guard let redUnwrapped = red,
+              let greenUnwrapped = green,
+              let blueUnwrapped = blue,
+              let alphaUnwrapped = alpha else { return defaultColor }
+        
+        let redFloat   = CGFloat(Double(redUnwrapped)!)
+        let greenFloat = CGFloat(Double(greenUnwrapped)!)
+        let blueFloat  = CGFloat(Double(blueUnwrapped)!)
+        let alphaFloat = CGFloat(Double(alphaUnwrapped)!)
+        
+        
+    }
+
     
 }
