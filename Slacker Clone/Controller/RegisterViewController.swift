@@ -26,6 +26,8 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLayersForUI()
+        navigationController?.delegate = self
         passwordTextField.delegate     = self
         emailTextField.delegate        = self
         nameTextField.delegate         = self
@@ -33,8 +35,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
         colorPicker.supportsAlpha = true
         colorPicker.selectedColor = UIColor.systemTeal
         colorPicker.delegate = self
-        navigationController?.delegate = self
-        setLayersForUI()
+       
         
     }
    
@@ -90,7 +91,6 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
       
         if let chosenColor = colorPicker.selectedColor.cgColor.components?.description {
-            print(chosenColor)
             avatarColor = chosenColor
             chooseColorButton.backgroundColor = colorPicker.selectedColor
         }
@@ -134,6 +134,7 @@ extension RegisterViewController: UITextFieldDelegate {
         }
       
     }
+    
 }
 
 extension RegisterViewController {
@@ -146,17 +147,24 @@ extension RegisterViewController {
         backgroundView.layer.cornerRadius = 10
         registerButton.layer.cornerRadius = 10
         
-        nameTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        emailTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        passwordTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        chooseColorButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        selectImageButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        nameTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        emailTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        passwordTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        chooseColorButton.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        imageView.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+ 
         
-        nameTextField.layer.shadowRadius = 3
-        emailTextField.layer.shadowRadius = 3
-        passwordTextField.layer.shadowRadius = 3
-        chooseColorButton.layer.shadowRadius = 3
-        selectImageButton.layer.shadowRadius = 3
+        nameTextField.layer.shadowRadius = 5
+        emailTextField.layer.shadowRadius = 5
+        passwordTextField.layer.shadowRadius = 5
+        chooseColorButton.layer.shadowRadius = 5
+        imageView.layer.shadowRadius = 10
+        
+        nameTextField.layer.shadowOpacity = 0.5
+        emailTextField.layer.shadowOpacity = 0.5
+        passwordTextField.layer.shadowOpacity = 0.5
+        chooseColorButton.layer.shadowOpacity = 0.5
+        imageView.layer.shadowOpacity = 0.5
         
     }
     
