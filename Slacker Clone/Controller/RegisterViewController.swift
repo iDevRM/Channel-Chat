@@ -16,13 +16,13 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var imageView:         UIImageView!
     @IBOutlet weak var registerButton:    UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
     
-    let colorPicker = UIColorPickerViewController()
-    
-    
-    
+    let colorPicker   = UIColorPickerViewController()
     var avatarPicture = UserDataService.instance.avatarName
     var avatarColor   = UserDataService.instance.avatarColor
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,28 +34,20 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
         colorPicker.selectedColor = UIColor.systemTeal
         colorPicker.delegate = self
         navigationController?.delegate = self
+        setLayersForUI()
         
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
-        loadView()
     }
    
     
     
     var newAvatar: UIImage {
         get {
-            
-            return UIImage(named: UserDataService.instance.avatarName )!
-            
+            return UIImage(named: UserDataService.instance.avatarName)!
         }
         set {
-            
             imageView.image = newValue
             loadView()
-            
         }
-        
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
@@ -111,16 +103,61 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
 
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.hasText {
-            return true
-        } else {
-            return false
+        switch textField {
+            case emailTextField:
+                if !textField.text!.contains("@") || !textField.text!.contains(".com") {
+                    textField.layer.borderWidth = 2
+                    textField.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+                    textField.text              = ""
+                    textField.placeholder       = "Must have valid email"
+                    return false
+                } else {
+                    textField.layer.borderWidth = 0
+                    textField.resignFirstResponder()
+                    return true
+                }
+            case passwordTextField:
+                if textField.text!.count < 6 {
+                    textField.layer.borderWidth = 2
+                    textField.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+                    textField.text              = ""
+                    textField.placeholder       = "Must have six characters"
+                    return false
+                } else {
+                    textField.layer.borderWidth = 0
+                    textField.resignFirstResponder()
+                    return true
+                }
+
+            default:
+                return true
         }
+      
     }
 }
 
-
 extension RegisterViewController {
-   
+    
+    func setLayersForUI() {
+        nameTextField.layer.cornerRadius = 10
+        emailTextField.layer.cornerRadius = 10
+        passwordTextField.layer.cornerRadius = 10
+        chooseColorButton.layer.cornerRadius = 10
+        backgroundView.layer.cornerRadius = 10
+        registerButton.layer.cornerRadius = 10
+        
+        nameTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        emailTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        passwordTextField.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        chooseColorButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        selectImageButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        nameTextField.layer.shadowRadius = 3
+        emailTextField.layer.shadowRadius = 3
+        passwordTextField.layer.shadowRadius = 3
+        chooseColorButton.layer.shadowRadius = 3
+        selectImageButton.layer.shadowRadius = 3
+        
+    }
     
 }

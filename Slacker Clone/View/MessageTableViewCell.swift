@@ -18,7 +18,7 @@ class MessageTableViewCell: UITableViewCell {
         messageLabel.text              = message.body
         avatarImage.image              = UIImage(named: message.userAvatarName)
         avatarImage.backgroundColor    = UserDataService.instance.returnUIColor(components: message.userAvatarColor)
-        avatarImage.layer.cornerRadius = 10
+        avatarImage.layer.cornerRadius = avatarImage.frame.height / 2
         nameLabel.text                 = message.userName
         formatMessageTime(message)
     }

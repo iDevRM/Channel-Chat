@@ -16,7 +16,7 @@ class AvatarImageViewController: UIViewController, UINavigationControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor              = #colorLiteral(red: 0.7346229553, green: 0.7302576303, blue: 0.7379794717, alpha: 1)
+        view.backgroundColor              = #colorLiteral(red: 0.4583977461, green: 0.4667810202, blue: 0.4714671373, alpha: 0.9136400033)
         collectionView.delegate           = self
         collectionView.dataSource         = self
         collectionView.layer.cornerRadius = 10

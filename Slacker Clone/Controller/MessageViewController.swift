@@ -7,12 +7,13 @@
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class MessageViewController: UIViewController, UIScrollViewDelegate {
      
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var typingUsersLabel: UILabel!
+//   @IBOutlet weak var scrollView: UIScrollView!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
     var chosenChannel: Channel?
@@ -24,16 +25,27 @@ class MessageViewController: UIViewController {
         tableView.delegate        = self
         tableView.dataSource      = self
         messageTextField.delegate = self
+        messageTextField.layer.borderWidth = 0.3
+        messageTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         setNavigationTitle()
+//        registerForKeyboardNotifications()
         setMessages()
         listenForNewMessages()
         listenForTypingUsers()
+//        scrollView.delegate = self
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterFromAllNotifications()
     }
     
     
     
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
+        guard messageTextField.hasText else { return }
         
         if NetworkManager.instance.isLoggedIn {
             let channelId = chosenChannel!.id!
@@ -156,6 +168,50 @@ extension MessageViewController {
             }
             
         }
+    }
+    
+}
+
+extension MessageViewController {
+    
+//    func registerForKeyboardNotifications() {
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+    
+    
+//    @objc func keyboardWillShowOrHide(notification: Notification) {
+//        if let info = notification.userInfo,
+//           let keyboardFrameValue = info[UIResponder.keyboardFrameEndUserInfoKey] {
+//            let keyboardFrame = (keyboardFrameValue as AnyObject).cgRectValue
+//            let keyboardOverlap = scrollView.frame.maxY - keyboardFrame!.origin.y + 15
+//
+//            scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+//            scrollView.contentInset.bottom = keyboardOverlap
+//            scrollView.verticalScrollIndicatorInsets.bottom = keyboardOverlap
+//        }
+//
+//
+//    }
+    
+    func unregisterFromAllNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+}
+
+extension MessageViewController {
+    
+    func hideKeyboardFromOutsideTap() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 }

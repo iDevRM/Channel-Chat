@@ -17,7 +17,6 @@ class ChannelTableViewCell: UITableViewCell {
         if imageName != nil {
             thumbnail.image = UIImage(systemName: "\(imageName!)")
         }
-        
     }
     
     func configActiveCell(channel: Channel) {
