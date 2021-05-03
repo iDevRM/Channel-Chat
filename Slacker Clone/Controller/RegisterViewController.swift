@@ -21,8 +21,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     let colorPicker   = UIColorPickerViewController()
     var avatarPicture = UserDataService.instance.avatarName
     var avatarColor   = UserDataService.instance.avatarColor
-    
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +34,9 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
         colorPicker.supportsAlpha = true
         colorPicker.selectedColor = UIColor.systemTeal
         colorPicker.delegate = self
-       
-        
+        imageView.image = UIImage(systemName: "questionmark.square")
     }
    
-    
-    
-    var newAvatar: UIImage {
-        get {
-            return UIImage(named: UserDataService.instance.avatarName)!
-        }
-        set {
-            imageView.image = newValue
-            loadView()
-        }
-    }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard passwordTextField.hasText, emailTextField.hasText else { return }
@@ -78,7 +65,13 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "AvatarImageSegue", sender: nil)
+        
+        if let avatarVC = storyboard?.instantiateViewController(identifier: "avatarID") as? AvatarImageViewController {
+            avatarVC.imageDelegate = self
+            present(avatarVC, animated: true, completion: nil)
+        }
+        
+        
         
     }
     
@@ -151,21 +144,36 @@ extension RegisterViewController {
         emailTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         passwordTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         chooseColorButton.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        imageView.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+       
  
         
         nameTextField.layer.shadowRadius = 5
         emailTextField.layer.shadowRadius = 5
         passwordTextField.layer.shadowRadius = 5
         chooseColorButton.layer.shadowRadius = 5
-        imageView.layer.shadowRadius = 10
+        
         
         nameTextField.layer.shadowOpacity = 0.5
         emailTextField.layer.shadowOpacity = 0.5
         passwordTextField.layer.shadowOpacity = 0.5
         chooseColorButton.layer.shadowOpacity = 0.5
-        imageView.layer.shadowOpacity = 0.5
+        
         
     }
+    
+}
+
+extension RegisterViewController: ImageSelecterDelegate {
+    func setNewImage(image: String, backgroundColor: UIColor) {
+        imageView.image = UIImage(named: image)
+        imageView.backgroundColor = backgroundColor
+        imageView.layer.borderWidth = 4
+        imageView.layer.borderColor = UIColor.darkGray.cgColor
+        imageView.layer.cornerRadius = 10
+        
+    }
+    
+    
+    
     
 }

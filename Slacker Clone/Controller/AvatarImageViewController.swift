@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol ImageSelecterDelegate {
+    func setNewImage(image: String, backgroundColor: UIColor )
+}
+
 class AvatarImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     var chosenPicture = ""
+    
+    var imageDelegate: ImageSelecterDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +58,13 @@ extension AvatarImageViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if segmentControl.selectedSegmentIndex == 0 {
-            print("light\(indexPath.row)")
+           
+            imageDelegate.setNewImage(image: "light\(indexPath.row)", backgroundColor: UIColor.lightGray)
             UserDataService.instance.avatarName = "light\(indexPath.row)"
             
         } else {
-            print("dark\(indexPath.row)")
+            
+            imageDelegate.setNewImage(image: "dark\(indexPath.row)", backgroundColor: UIColor.gray)
             UserDataService.instance.avatarName = "dark\(indexPath.row)"
         }
        

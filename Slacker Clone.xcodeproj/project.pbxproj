@@ -28,6 +28,7 @@
 		1DE331D7263899D0001C225D /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE331D6263899D0001C225D /* UserDataService.swift */; };
 		1DEE2BE5261B761800C08C11 /* AvatarImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BE4261B761800C08C11 /* AvatarImageViewController.swift */; };
 		1DEE2BEC261B77D900C08C11 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */; };
+		42A855756A09AF83891503BC /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA6BE115515B881BE1F35FD /* Pods_Slacker_Clone.framework */; };
 		D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		1DEE2BEB261B77D900C08C11 /* AvatarImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
 		9D7D88A35A05EF88D417EA6C /* Pods-Slacker Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacker Clone.debug.xcconfig"; path = "Target Support Files/Pods-Slacker Clone/Pods-Slacker Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Slacker_Clone.framework; path = "/Users/rick/Library/Developer/Xcode/DerivedData/Slacker_Clone-bptnfhomugxjeodddwexogesdogl/Build/Products/Debug-iphoneos/Pods_Slacker_Clone.framework"; sourceTree = "<absolute>"; };
+		FCA6BE115515B881BE1F35FD /* Pods_Slacker_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacker_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A2B0873C7C1A8B90261E4E /* Pods_Slacker_Clone.framework in Frameworks */,
+				42A855756A09AF83891503BC /* Pods_Slacker_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				A7257EEDC8A7D42079FAB009 /* Pods_Slacker_Clone.framework */,
+				FCA6BE115515B881BE1F35FD /* Pods_Slacker_Clone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

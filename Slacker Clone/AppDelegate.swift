@@ -7,6 +7,7 @@
 
 import UIKit
 import SocketIO
+import IQKeyboardManagerSwift
 
 
 @main
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SocketService.instance.establishConnection()
+        
+        IQKeyboardManager.shared.enable = true
+        
         return true
     }
     

@@ -28,18 +28,11 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
         messageTextField.layer.borderWidth = 0.3
         messageTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         setNavigationTitle()
-//        registerForKeyboardNotifications()
         setMessages()
         listenForNewMessages()
         listenForTypingUsers()
-//        scrollView.delegate = self
         hideKeyboardFromOutsideTap()
         
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unregisterFromAllNotifications()
     }
     
     
@@ -68,7 +61,6 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
 extension MessageViewController: UITextFieldDelegate, UINavigationControllerDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sendButtonTapped(UIButton())
-        messageTextField.resignFirstResponder()
         return true
     }
     
@@ -170,37 +162,6 @@ extension MessageViewController {
             
         }
     }
-    
-}
-
-extension MessageViewController {
-    
-//    func registerForKeyboardNotifications() {
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide), name: UIResponder.keyboardWillShowNotification, object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-    
-    
-//    @objc func keyboardWillShowOrHide(notification: Notification) {
-//        if let info = notification.userInfo,
-//           let keyboardFrameValue = info[UIResponder.keyboardFrameEndUserInfoKey] {
-//            let keyboardFrame = (keyboardFrameValue as AnyObject).cgRectValue
-//            let keyboardOverlap = scrollView.frame.maxY - keyboardFrame!.origin.y + 15
-//
-//            scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
-//            scrollView.contentInset.bottom = keyboardOverlap
-//            scrollView.verticalScrollIndicatorInsets.bottom = keyboardOverlap
-//        }
-//
-//
-//    }
-    
-    func unregisterFromAllNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     
 }
 

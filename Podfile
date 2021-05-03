@@ -10,4 +10,6 @@ target 'Slacker Clone' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
 
+  pod 'IQKeyboardManagerSwift', '6.5.0'
+
 end
