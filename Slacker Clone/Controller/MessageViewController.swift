@@ -33,6 +33,7 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
         listenForNewMessages()
         listenForTypingUsers()
 //        scrollView.delegate = self
+        hideKeyboardFromOutsideTap()
         
     }
     
