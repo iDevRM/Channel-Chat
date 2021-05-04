@@ -28,3 +28,5 @@ enum URLEndpoint: String {
     case getChannels    = "/v1/channel"
     case getAllMessages = "/v1/message/byChannel/"
 }
+
+
