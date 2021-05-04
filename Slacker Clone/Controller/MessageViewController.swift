@@ -13,7 +13,6 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var typingUsersLabel: UILabel!
-    //   @IBOutlet weak var scrollView: UIScrollView!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
     var chosenChannel: Channel?
@@ -28,7 +27,6 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
         listenForNewMessages()
         listenForTypingUsers()
         hideKeyboardFromOutsideTap()
-        
     }
     
     
