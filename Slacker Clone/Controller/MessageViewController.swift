@@ -8,25 +8,21 @@
 import UIKit
 
 class MessageViewController: UIViewController, UIScrollViewDelegate {
-     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var typingUsersLabel: UILabel!
-//   @IBOutlet weak var scrollView: UIScrollView!
+    //   @IBOutlet weak var scrollView: UIScrollView!
     
     var loggedInUser = NetworkManager.instance.loggedInUser
     var chosenChannel: Channel?
     var messagesForChannel: [Message] = []
     var isTyping = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate        = self
-        tableView.dataSource      = self
-        messageTextField.delegate = self
-        messageTextField.layer.borderWidth = 0.3
-        messageTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        setUIAndDelegates()
         setNavigationTitle()
         setMessages()
         listenForNewMessages()
@@ -37,7 +33,7 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
     
     
     
-    
+//MARK: - IBActions / API calls
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         guard messageTextField.hasText else { return }
         
@@ -58,6 +54,7 @@ class MessageViewController: UIViewController, UIScrollViewDelegate {
     }
 }
 
+//MARK: - Text Field Delegate / Navigation Controller Delegate
 extension MessageViewController: UITextFieldDelegate, UINavigationControllerDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sendButtonTapped(UIButton())
@@ -82,7 +79,9 @@ extension MessageViewController: UITextFieldDelegate, UINavigationControllerDele
     
 }
 
+//MARK: - Table View Delegate and Data Source
 extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messagesForChannel.count
     }
@@ -95,16 +94,10 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    
 }
 
+//MARK: - Socket Services
 extension MessageViewController {
-    
-    func setNavigationTitle() {
-        if let title = chosenChannel?.name {
-            navigationItem.title = "#\(title)"
-        }
-    }
     
     func setMessages() {
         if chosenChannel != nil {
@@ -119,15 +112,17 @@ extension MessageViewController {
                 }
             }
         }
+        
     }
     
     func listenForNewMessages() {
         SocketService.instance.getNewMessage { (newMessage) in
             if newMessage.channelId == self.chosenChannel?.id {
                 self.setMessages()
-              
+                
             }
         }
+        
     }
     
     func listenForTypingUsers() {
@@ -136,7 +131,7 @@ extension MessageViewController {
             guard let channelId = self.chosenChannel?.id,
                   let userName = self.loggedInUser?.name else { return }
             
-            var names = ""
+            var names          = ""
             var numberOfTypers = 0
             
             for (typingUser, channel) in typingUsers {
@@ -159,12 +154,12 @@ extension MessageViewController {
             } else {
                 self.typingUsersLabel.text = ""
             }
-            
         }
     }
     
 }
 
+//MARK: - Helper Functions
 extension MessageViewController {
     
     func hideKeyboardFromOutsideTap() {
@@ -174,6 +169,20 @@ extension MessageViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func setNavigationTitle() {
+        if let title = chosenChannel?.name {
+            navigationItem.title = "#\(title)"
+        }
+    }
+    
+    func setUIAndDelegates() {
+        tableView.delegate                 = self
+        tableView.dataSource               = self
+        messageTextField.delegate          = self
+        messageTextField.layer.borderWidth = 0.3
+        messageTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
 }

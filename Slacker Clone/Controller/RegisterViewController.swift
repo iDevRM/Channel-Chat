@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
     let colorPicker   = UIColorPickerViewController()
     var avatarPicture = UserDataService.instance.avatarName
     var avatarColor   = UserDataService.instance.avatarColor
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +29,9 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
         setAllDelegates()
         hideKeyboardFromOutsideTap()
     }
-   
-
-//MARK: - IBActions / API calls
+    
+    
+    //MARK: - IBActions / API calls
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard passwordTextField.hasText, emailTextField.hasText else { return }
         
@@ -79,7 +79,7 @@ class RegisterViewController: UIViewController, UINavigationControllerDelegate {
 //MARK: - Color Picker Protocols and Delegate Methods
 extension RegisterViewController: UIColorPickerViewControllerDelegate {
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-      
+        
         if let chosenColor = colorPicker.selectedColor.cgColor.components?.description {
             avatarColor = chosenColor
             chooseColorButton.backgroundColor = colorPicker.selectedColor
@@ -91,7 +91,7 @@ extension RegisterViewController: UIColorPickerViewControllerDelegate {
 //MARK: - Text Field Protocols and Delegate Methods
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      return validateText(for: textField)
+        return validateText(for: textField)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -116,14 +116,11 @@ extension RegisterViewController {
         emailTextField.layer.shadowColor    = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         passwordTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         chooseColorButton.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-       
- 
         
         nameTextField.layer.shadowRadius     = 5
         emailTextField.layer.shadowRadius    = 5
         passwordTextField.layer.shadowRadius = 5
         chooseColorButton.layer.shadowRadius = 5
-        
         
         nameTextField.layer.shadowOpacity     = 0.5
         emailTextField.layer.shadowOpacity    = 0.5
@@ -169,7 +166,7 @@ extension RegisterViewController {
                     textField.resignFirstResponder()
                     return true
                 }
-
+                
             default:
                 return true
         }
