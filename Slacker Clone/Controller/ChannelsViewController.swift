@@ -20,15 +20,14 @@ class ChannelsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        channelsTableView.delegate   = self
-        channelsTableView.dataSource = self
-        button.layer.cornerRadius    = 25
+        setUIAndDelegates()
         setNaviationTitle()
         setChannels()
         listenForNewChannels()
         listenForNewMessages()
     }
     
+//MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? MessageViewController {
             if channelSelected != nil {
@@ -37,7 +36,7 @@ class ChannelsViewController: UIViewController {
         }
     }
     
-    
+//MARK: - IBActions
     @IBAction func addChannelTapped(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "Add New Channel", message: nil, preferredStyle: .alert)
@@ -76,6 +75,7 @@ class ChannelsViewController: UIViewController {
     
 }
 
+//MARK: - Table View Delegate and Data Source
 extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return placeHolderChannels.count + 6
@@ -142,12 +142,8 @@ extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - Socket Services
 extension ChannelsViewController {
-    func setNaviationTitle() {
-        if let user = NetworkManager.instance.loggedInUser {
-            navigationItem.title = "\(user.name )'s channel"
-        }
-    }
     
     func setChannels() {
         MessageService.instance.findAllChannels { (success) in
@@ -174,4 +170,21 @@ extension ChannelsViewController {
             self.channelsTableView.reloadData()
         }
     }
+}
+
+//MARK: - Helper Functions
+extension ChannelsViewController {
+    
+    func setUIAndDelegates() {
+        channelsTableView.delegate   = self
+        channelsTableView.dataSource = self
+        button.layer.cornerRadius    = 25
+    }
+    
+    func setNaviationTitle() {
+        if let user = NetworkManager.instance.loggedInUser {
+            navigationItem.title = "\(user.name )'s channel"
+        }
+    }
+    
 }
