@@ -83,23 +83,27 @@ extension LogInViewController: UITextFieldDelegate {
 extension LogInViewController {
     
     func setUIAndDelegates() {
-        emailTextField.delegate    = self
-        passwordTextField.delegate = self
-        logInButton.layer.cornerRadius = 10
-        textFieldBackgroundView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        passwordTextField.layer.shadowRadius = 3
-        emailTextField.layer.shadowRadius = 3
-        emailTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        passwordTextField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        emailTextField.layer.shadowOpacity = 0.5
-        passwordTextField.layer.shadowOpacity = 0.5
+        emailTextField.delegate                     = self
+        passwordTextField.delegate                  = self
         
+        logInButton.layer.cornerRadius              = 10
+        textFieldBackgroundView.layer.cornerRadius  = 10
+        
+        textFieldBackgroundView.layer.shadowColor   = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        emailTextField.layer.shadowColor            = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        passwordTextField.layer.shadowColor         = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        logInButton.layer.shadowColor               = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        passwordTextField.layer.shadowRadius        = 3
+        textFieldBackgroundView.layer.shadowRadius  = 5
+        emailTextField.layer.shadowRadius           = 3
+        logInButton.layer.shadowRadius              = 5
+        
+        emailTextField.layer.shadowOpacity          = 0.5
+        passwordTextField.layer.shadowOpacity       = 0.5
         textFieldBackgroundView.layer.shadowOpacity = 0.50
-        textFieldBackgroundView.layer.shadowRadius = 5
-        textFieldBackgroundView.layer.cornerRadius = 10
-        logInButton.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        logInButton.layer.shadowOpacity = 0.70
-        logInButton.layer.shadowRadius = 5
+        logInButton.layer.shadowOpacity             = 0.70
+     
     }
     
     func clearTextAndSetBorder(for textField: UITextField) {

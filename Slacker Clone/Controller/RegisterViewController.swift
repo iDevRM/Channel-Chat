@@ -188,9 +188,10 @@ extension RegisterViewController: ImageSelecterDelegate {
     func setNewImage(image: String, backgroundColor: UIColor) {
         imageView.image = UIImage(named: image)
         imageView.backgroundColor = backgroundColor
-        imageView.layer.borderWidth = 4
         imageView.layer.borderColor = UIColor.darkGray.cgColor
+        imageView.layer.borderWidth = 4
         imageView.layer.cornerRadius = 10
+       
         
     }
     

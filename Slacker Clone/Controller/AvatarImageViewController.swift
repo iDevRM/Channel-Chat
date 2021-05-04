@@ -7,17 +7,16 @@
 
 import UIKit
 
+//MARK: - Protocols
 protocol ImageSelecterDelegate {
     func setNewImage(image: String, backgroundColor: UIColor )
 }
-
+//MARK: - ViewController
 class AvatarImageViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    
-    var chosenPicture = ""
-    
+
     var imageDelegate: ImageSelecterDelegate!
 
     override func viewDidLoad() {
@@ -29,14 +28,13 @@ class AvatarImageViewController: UIViewController, UINavigationControllerDelegat
         collectionView.backgroundColor    = .white
     }
 
+//MARK: - IBActions
     @IBAction func segmentControlTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
-    
-
 }
 
-//MARK: - Collection View Delegates and Data Source
+//MARK: - Collection View Delegate and Data Source
 extension AvatarImageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
@@ -59,12 +57,12 @@ extension AvatarImageViewController: UICollectionViewDelegate, UICollectionViewD
         
         if segmentControl.selectedSegmentIndex == 0 {
            
-            imageDelegate.setNewImage(image: "light\(indexPath.row)", backgroundColor: UIColor.lightGray)
+            imageDelegate.setNewImage(image: "light\(indexPath.row)", backgroundColor: UIColor.gray)
             UserDataService.instance.avatarName = "light\(indexPath.row)"
             
         } else {
             
-            imageDelegate.setNewImage(image: "dark\(indexPath.row)", backgroundColor: UIColor.gray)
+            imageDelegate.setNewImage(image: "dark\(indexPath.row)", backgroundColor: UIColor.lightGray)
             UserDataService.instance.avatarName = "dark\(indexPath.row)"
         }
        
