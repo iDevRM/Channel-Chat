@@ -1,5 +1,5 @@
 # Slacker-Clone
-A slacker clone for my capstone project
+A slack clone for my capstone project
 
 This comes with the chat api server to run locally.
 
