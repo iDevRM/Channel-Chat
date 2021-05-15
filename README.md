@@ -7,6 +7,8 @@ For server and database to run you will need:
 Node.js
 MongoDB
 
+To run project open workspace project.
+
 Pods installed:
 SocketIO
 Alamofire
