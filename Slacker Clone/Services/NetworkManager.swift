@@ -105,8 +105,8 @@ class NetworkManager {
         let lowecasedEmail = email.lowercased()
         
         let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(authToken)",
-            "Content-Type" : "application/json"
+            BEARER_HEADER[0],
+            HEADER[0]
         ]
         
         let body: [String: Any] = [
@@ -130,11 +130,7 @@ class NetworkManager {
     func findUserByEmail(email: String, completion: @escaping (Bool) -> Void) {
         let url = "\(urlWithEndpoint(type: .byUserEmail))\(email.lowercased())"
         
-        let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(authToken)"
-        ]
-        
-        AF.request(url, method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+        AF.request(url, method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             
             if response.error == nil {
                 guard let data = response.data else { return }
