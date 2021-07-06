@@ -92,7 +92,7 @@ class NetworkManager {
                         self.authToken = json["token"].stringValue
                         self.isLoggedIn = true
                     } catch {
-                        print(error)
+                        debugPrint(error)
                     }
                 }
                 completion(true)
@@ -122,7 +122,7 @@ class NetworkManager {
                 completion(true)
             } else {
                 completion(false)
-                print(response.error!.localizedDescription)
+                debugPrint(response.error!.localizedDescription)
             }
         }
     }
@@ -141,12 +141,12 @@ class NetworkManager {
                     self.loggedInUser = user
                     completion(true)
                 } catch {
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
                 }
                 
             } else {
                 completion(false)
-                print(response.error!.localizedDescription)
+                debugPrint(response.error!.localizedDescription)
             }
             
         }

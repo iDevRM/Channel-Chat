@@ -26,7 +26,7 @@ class SocketService: NSObject {
     func establishConnection() {
         
         socket.on(clientEvent: .connect) {data, ack in
-            print("Socket Connected")
+            
         }
 
         socket.connect()

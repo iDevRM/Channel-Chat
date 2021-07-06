@@ -38,12 +38,12 @@ class MessageService {
                     }
                     
                 } catch {
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
                 }
 
             } else {
                 completion(false)
-                print(response.error as Any)
+                debugPrint(response.error as Any)
             }
         }
         
@@ -74,14 +74,14 @@ class MessageService {
                     
                 } catch {
                     
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
                     
                 }
                 
             } else {
                 
                 completion(false,arrayOfMessages)
-                print(response.error as Any)
+                debugPrint(response.error as Any)
                 
             }
             
